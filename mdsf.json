@@ -1,0 +1,277 @@
+{
+  "$schema": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.0.8/mdsf.schema.json",
+  "format_finished_document": false,
+  "javascript_runtime": "node",
+  "assembly": {
+    "enabled": true,
+    "formatter": "asmfmt"
+  },
+  "bazel": {
+    "enabled": true,
+    "formatter": "buildifier"
+  },
+  "bicep": {
+    "enabled": true,
+    "formatter": "bicep_format"
+  },
+  "blade": {
+    "enabled": true,
+    "formatter": "blade-formatter"
+  },
+  "c": {
+    "enabled": true,
+    "formatter": "clang-format"
+  },
+  "cabal": {
+    "enabled": true,
+    "formatter": "cabal_format"
+  },
+  "clojure": {
+    "enabled": true,
+    "formatter": [["cljstyle", "joker"]]
+  },
+  "cpp": {
+    "enabled": true,
+    "formatter": "clang-format"
+  },
+  "crystal": {
+    "enabled": true,
+    "formatter": "crystal_format"
+  },
+  "csharp": {
+    "enabled": true,
+    "formatter": [["csharpier", "clang-format"]]
+  },
+  "css": {
+    "enabled": true,
+    "formatter": [["prettier", "stylelint"]]
+  },
+  "d": {
+    "enabled": true,
+    "formatter": "dfmt"
+  },
+  "dart": {
+    "enabled": true,
+    "formatter": "dart_format"
+  },
+  "elixir": {
+    "enabled": true,
+    "formatter": "mix_format"
+  },
+  "elm": {
+    "enabled": true,
+    "formatter": "elm-format"
+  },
+  "erb": {
+    "enabled": true,
+    "formatter": "erb-formatter"
+  },
+  "erlang": {
+    "enabled": true,
+    "formatter": [["erlfmt", "efmt"]]
+  },
+  "fennel": {
+    "enabled": true,
+    "formatter": "fnlfmt"
+  },
+  "fortran": {
+    "enabled": true,
+    "formatter": [["fprettify", "findent"]]
+  },
+  "fsharp": {
+    "enabled": true,
+    "formatter": "fantomas"
+  },
+  "fish": {
+    "enabled": true,
+    "formatter": "fish_indent"
+  },
+  "gdscript": {
+    "enabled": true,
+    "formatter": "gdformat"
+  },
+  "gleam": {
+    "enabled": true,
+    "formatter": "gleam_format"
+  },
+  "go": {
+    "enabled": true,
+    "formatter": [
+      ["gci", "goimports-reviser", "goimports"],
+      ["gofumpt", "gofmt", "crlfmt"]
+    ]
+  },
+  "graphql": {
+    "enabled": true,
+    "formatter": "prettier"
+  },
+  "groovy": {
+    "enabled": true,
+    "formatter": "npm-groovy-lint"
+  },
+  "handlebars": {
+    "enabled": true,
+    "formatter": [["prettier", "djlint"]]
+  },
+  "haskell": {
+    "enabled": true,
+    "formatter": [["fourmolu", "ormolu", "hindent", "stylish-haskell"]]
+  },
+  "hcl": {
+    "enabled": true,
+    "formatter": [["terraform_fmt", "tofu_fmt"]]
+  },
+  "html": {
+    "enabled": true,
+    "formatter": [["prettier", "djlint"]]
+  },
+  "java": {
+    "enabled": true,
+    "formatter": [["google-java-format", "clang-format"]]
+  },
+  "javascript": {
+    "enabled": true,
+    "formatter": [
+      ["prettier", "biome", "deno_fmt", "clang-format", "standardjs"]
+    ]
+  },
+  "json": {
+    "enabled": true,
+    "formatter": [["prettier", "biome", "deno_fmt", "clang-format"]]
+  },
+  "julia": {
+    "enabled": true,
+    "formatter": "juliaformatter.jl"
+  },
+  "just": {
+    "enabled": true,
+    "formatter": "just_fmt"
+  },
+  "kcl": {
+    "enabled": true,
+    "formatter": "kcl_fmt"
+  },
+  "kotlin": {
+    "enabled": true,
+    "formatter": [["ktlint", "ktfmt"]]
+  },
+  "lua": {
+    "enabled": true,
+    "formatter": [["stylua", "luaformatter"]]
+  },
+  "markdown": {
+    "enabled": true,
+    "formatter": [["prettier", "mdformat"]]
+  },
+  "mustache": {
+    "enabled": true,
+    "formatter": "djlint"
+  },
+  "nim": {
+    "enabled": true,
+    "formatter": "nimpretty"
+  },
+  "nix": {
+    "enabled": true,
+    "formatter": [["nixfmt", "alejandra", "nixpkgs-fmt"]]
+  },
+  "nunjucks": {
+    "enabled": true,
+    "formatter": "djlint"
+  },
+  "objective_c": {
+    "enabled": true,
+    "formatter": "clang-format"
+  },
+  "ocaml": {
+    "enabled": true,
+    "formatter": [["ocamlformat", "ocp-indent"]]
+  },
+  "perl": {
+    "enabled": true,
+    "formatter": "perltidy"
+  },
+  "protobuf": {
+    "enabled": true,
+    "formatter": [["buf", "clang-format"]]
+  },
+  "puppet": {
+    "enabled": true,
+    "formatter": [["puppet-lint"]]
+  },
+  "purescript": {
+    "enabled": true,
+    "formatter": "purs-tidy"
+  },
+  "python": {
+    "enabled": true,
+    "formatter": [
+      ["usort", "isort"],
+      ["ruff", "blue", "black", "yapf", "autopep8", "pyink"]
+    ]
+  },
+  "rescript": {
+    "enabled": true,
+    "formatter": "rescript_format"
+  },
+  "restructuredtext": {
+    "enabled": true,
+    "formatter": [["rstfmt", "docstrfmt"]]
+  },
+  "roc": {
+    "enabled": true,
+    "formatter": "roc_format"
+  },
+  "ruby": {
+    "enabled": true,
+    "formatter": [["rubocop", "rufo", "rubyfmt", "standardrb"]]
+  },
+  "rust": {
+    "enabled": true,
+    "formatter": [["rustfmt"]]
+  },
+  "scala": {
+    "enabled": true,
+    "formatter": "scalafmt"
+  },
+  "shell": {
+    "enabled": true,
+    "formatter": [["shfmt", "beautysh"]]
+  },
+  "solidity": {
+    "enabled": true,
+    "formatter": [["forge_fmt"]]
+  },
+  "sql": {
+    "enabled": true,
+    "formatter": [["sql-formatter", "sqlfluff"]]
+  },
+  "swift": {
+    "enabled": true,
+    "formatter": [["swift-format", "swiftformat"]]
+  },
+  "toml": {
+    "enabled": true,
+    "formatter": "taplo"
+  },
+  "typescript": {
+    "enabled": true,
+    "formatter": [["prettier", "biome", "deno_fmt"]]
+  },
+  "vue": {
+    "enabled": true,
+    "formatter": "prettier"
+  },
+  "xml": {
+    "enabled": true,
+    "formatter": [["xmllint", "xmlformat"]]
+  },
+  "yaml": {
+    "enabled": true,
+    "formatter": [["prettier", "yamlfmt", "yamlfix"]]
+  },
+  "zig": {
+    "enabled": true,
+    "formatter": "zigfmt"
+  }
+}
