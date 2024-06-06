@@ -2,7 +2,7 @@
 name = "kdlfmt"
 version = "0.0.0"
 edition = "2021"
-description = "Format kdl documents."
+description = "A code formatter for kdl v1 documents."
 authors = ["Mads Hougesen <mads@mhouge.dk>"]
 license = "MIT"
 repository = "https://github.com/hougesen/kdlfmt"
@@ -13,5 +13,6 @@ categories = ["development-tools", "command-line-utilities"]
 
 [dependencies]
 clap = { version = "4.5.4", features = ["derive"] }
+console = "0.15.8"
 ignore = "0.4.22"
 kdl = "4.6.0"
