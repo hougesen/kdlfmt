@@ -14,6 +14,9 @@ pub enum Commands {
 
     /// Validate files are formatted
     Check(FormatCommandArguments),
+
+    /// Generate shell completions
+    Completions(ShellCompletionCommandArguments),
 }
 
 #[derive(Args, Debug)]
@@ -21,4 +24,10 @@ pub struct FormatCommandArguments {
     /// Path to file OR directory
     #[arg()]
     pub input: std::path::PathBuf,
+}
+
+#[derive(Args, Debug)]
+pub struct ShellCompletionCommandArguments {
+    #[arg()]
+    pub shell: clap_complete::Shell,
 }
