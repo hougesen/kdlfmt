@@ -1,0 +1,30 @@
+name: validate
+on:
+  push:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+env:
+  CARGO_TERM_COLOR: always
+  RUST_BACKTRACE: full
+jobs:
+  lint:
+    name: lint
+    strategy:
+      matrix:
+        os:
+          - windows-latest
+          - macos-latest
+          - ubuntu-latest
+          # TODO: remove once macos-latest is upgraded to an arm machine
+          - macos-14
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Swatinem/rust-cache@v2
+      - run: rustup toolchain install stable --profile minimal
+      - run: rustup component add rustfmt clippy
+      - run: cargo fetch
+      - run: cargo fmt -- --check --color always
+      - run: cargo clippy
+      - run: cargo test
