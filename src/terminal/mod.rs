@@ -35,5 +35,33 @@ pub fn print_format_finished(file_count: usize, duration: core::time::Duration) 
         format!("{millis}ms")
     };
 
-    println!("{file_count } files was formatted in {time_taken}");
+    let file_or_files = if file_count == 1 { "file" } else { "files" };
+
+    println!("{file_count} {file_or_files} was formatted in {time_taken}");
+}
+
+#[inline]
+pub fn print_check_changed_file(path: &std::path::Path) {
+    eprintln!(
+        "{}",
+        style(format!("{} is not formatted", path.display()))
+            .bold()
+            .red()
+    );
+}
+
+#[inline]
+pub fn print_check_finished(file_count: usize) {
+    if file_count == 0 {
+        println!("All files are formatted!");
+    } else {
+        let file_or_files = if file_count == 1 { "file" } else { "files" };
+
+        eprintln!(
+            "{}",
+            style(format!("{file_count} unformatted {file_or_files}"))
+                .bold()
+                .red()
+        );
+    }
 }

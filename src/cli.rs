@@ -11,6 +11,9 @@ pub struct Cli {
 pub enum Commands {
     /// Format kdl files
     Format(FormatCommandArguments),
+
+    /// Validate files are formatted
+    Check(FormatCommandArguments),
 }
 
 #[derive(Args, Debug)]
