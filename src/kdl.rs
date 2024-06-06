@@ -1,5 +1,5 @@
 #[inline]
-pub fn parse_kdl(input: String) -> Result<kdl::KdlDocument, kdl::KdlError> {
+pub fn parse_kdl(input: &str) -> Result<kdl::KdlDocument, kdl::KdlError> {
     input.parse::<kdl::KdlDocument>()
 }
 

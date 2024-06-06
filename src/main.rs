@@ -1,21 +1,20 @@
 use clap::Parser;
 
-use self::{cli::Cli, commands::execute_command, error::KdlFmtError};
+use self::{cli::Cli, commands::execute_command, terminal::log_error};
 
 mod cli;
 mod commands;
 mod error;
 mod fs;
 mod kdl;
+mod terminal;
 
-fn main() -> Result<(), KdlFmtError> {
-    let c = Cli::parse();
+fn main() {
+    let cli = Cli::parse();
 
-    if let Err(error) = execute_command(c.command) {
-        eprintln!("{error:#?}");
+    if let Err(error) = execute_command(cli.command) {
+        log_error(&error);
 
         std::process::exit(1);
     }
-
-    Ok(())
 }
