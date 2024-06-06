@@ -9,11 +9,13 @@ pub struct Cli {
 
 #[derive(Debug, Subcommand)]
 pub enum Commands {
+    /// Format kdl files
     Format(FormatCommandArguments),
 }
 
 #[derive(Args, Debug)]
 pub struct FormatCommandArguments {
+    /// Path to file OR directory
     #[arg()]
     pub input: std::path::PathBuf,
 }

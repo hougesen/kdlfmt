@@ -5,6 +5,7 @@ pub enum KdlFmtError {
 }
 
 impl std::fmt::Display for KdlFmtError {
+    #[inline]
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             Self::IoError(e) => e.fmt(f),
@@ -16,6 +17,7 @@ impl std::fmt::Display for KdlFmtError {
 impl std::error::Error for KdlFmtError {}
 
 impl From<std::io::Error> for KdlFmtError {
+    #[inline]
     fn from(value: std::io::Error) -> Self {
         Self::IoError(value)
     }
