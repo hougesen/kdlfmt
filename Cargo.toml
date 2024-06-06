@@ -13,4 +13,5 @@ categories = ["development-tools", "command-line-utilities"]
 
 [dependencies]
 clap = { version = "4.5.4", features = ["derive"] }
+ignore = "0.4.22"
 kdl = "4.6.0"
