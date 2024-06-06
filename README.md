@@ -32,7 +32,7 @@ kdlfmt check <PATH>
 
 `.kdlfmtignore` files are used to ignore files/directories.
 
-It used the same syntax as `.gitignore` files.
+It uses the same syntax as `.gitignore` files.
 
 ### Shell completion
 
