@@ -24,6 +24,19 @@ pub struct FormatCommandArguments {
     /// Path to file OR directory
     #[arg()]
     pub input: std::path::PathBuf,
+
+    #[arg(long, value_enum)]
+    pub log_level: Option<LogLevel>,
+}
+
+#[derive(clap::ValueEnum, Clone, Copy, PartialEq, Eq, Debug)]
+pub enum LogLevel {
+    Trace,
+    Debug,
+    Info,
+    Warn,
+    Error,
+    Off,
 }
 
 #[derive(Args, Debug)]
