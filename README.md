@@ -8,7 +8,7 @@ kdlfmt is a thin cli wrapper built on-top of the official `kdl` parser for Rust 
 
 kdlfmt can be installed using Cargo, the package manager for Rust ([crates.io](https://crates.io/crates/kdlfmt)).
 
-```sh
+```shell
 cargo install kdlfmt
 ```
 
@@ -18,14 +18,14 @@ If you do not have/want Rust installed on your device you can find precompiled b
 
 Once installed the formatted can be invoked by running `kdlfmt format`.
 
-```sh
-kdlfmt format <PATH>
+```shell
+kdlfmt format PATH
 ```
 
 kdlfmt also support validating if files are formatted using the `kdlfmt check` command.
 
-```sh
-kdlfmt check <PATH>
+```shell
+kdlfmt check PATH
 ```
 
 ### Ignoring files
