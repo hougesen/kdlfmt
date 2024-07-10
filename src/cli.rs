@@ -1,3 +1,5 @@
+use std::io::Read;
+
 use clap::{Args, Parser, Subcommand};
 
 #[derive(Debug, Parser)]
@@ -21,9 +23,10 @@ pub enum Commands {
 
 #[derive(Args, Debug)]
 pub struct FormatCommandArguments {
-    /// Path to file OR directory
+    /// Path to file OR directory.
+    /// Use "-" to read from stdin.  
     #[arg()]
-    pub input: std::path::PathBuf,
+    pub input: String,
 
     #[arg(long, value_enum)]
     pub log_level: Option<LogLevel>,
@@ -43,4 +46,15 @@ pub enum LogLevel {
 pub struct ShellCompletionCommandArguments {
     #[arg()]
     pub shell: clap_complete::Shell,
+}
+
+#[inline]
+pub fn read_stdin() -> std::io::Result<String> {
+    let stdin = std::io::stdin();
+
+    let mut input = String::new();
+
+    stdin.lock().read_to_string(&mut input)?;
+
+    Ok(input)
 }

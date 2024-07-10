@@ -1,15 +1,28 @@
 #[derive(Debug)]
 pub enum KdlFmtError {
     IoError(std::io::Error),
-    ParseError(std::path::PathBuf, kdl::KdlError),
+    InvalidPathError(String),
+    ParseError(Option<std::path::PathBuf>, kdl::KdlError),
+    ReadStdinError(std::io::Error),
+    CheckModeChanges,
 }
 
 impl std::fmt::Display for KdlFmtError {
     #[inline]
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            Self::IoError(e) => e.fmt(f),
-            Self::ParseError(path, _error) => write!(f, "Error parsing file '{}'", path.display()),
+            Self::IoError(error) => error.fmt(f),
+            Self::ReadStdinError(error) => write!(f, "Error reading input from stdin - {error}"),
+            Self::ParseError(maybe_path, error) => {
+                if let Some(path) = maybe_path {
+                    write!(f, "Error parsing file '{}' - {error}", path.display())
+                } else {
+                    write!(f, "Error parsing file - {error}")
+                }
+            }
+            Self::InvalidPathError(path) => write!(f, "'{path}' is not a valid path"),
+
+            Self::CheckModeChanges => write!(f, "Found changes while running in check mode"),
         }
     }
 }
