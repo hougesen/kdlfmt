@@ -32,16 +32,20 @@ test-coverage:
 format:
     cargo fmt
     just --fmt --unstable .
-    mdsf format . 
+    mdsf format .
     npx prettier --write --cache .
+
+changelog:
+    npx auto-changelog
 
 precommit:
     cargo clean
-    just format 
+    just changelog
+    just format
     just build
     just lint
     just test
-    typos .
+    typos --exclude CHANGELOG.md .
 
 publish:
     just build
