@@ -36,7 +36,7 @@ format:
     npx prettier --write --cache .
 
 changelog:
-    npx auto-changelog
+    npx auto-changelog -u
 
 precommit:
     cargo clean
