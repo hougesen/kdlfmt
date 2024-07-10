@@ -1,5 +1,7 @@
+use std::str::FromStr;
+
 use crate::{
-    cli::FormatCommandArguments,
+    cli::{read_stdin, FormatCommandArguments},
     error::KdlFmtError,
     fs::{read_file, save_file, setup_walker, KDL_FILE_EXTENSION},
     kdl::{format_kdl, parse_kdl},
@@ -7,8 +9,24 @@ use crate::{
 };
 
 #[inline]
-pub fn run(args: &FormatCommandArguments) -> Result<(), KdlFmtError> {
-    let walker = setup_walker(&args.input);
+fn run_from_stdin(_args: &FormatCommandArguments) -> Result<(), KdlFmtError> {
+    let input = read_stdin().map_err(KdlFmtError::ReadStdinError)?;
+
+    let parsed = parse_kdl(&input).map_err(|error| KdlFmtError::ParseError(None, error))?;
+
+    let formatted = format_kdl(parsed);
+
+    println!("{formatted}");
+
+    Ok(())
+}
+
+#[inline]
+fn run_from_args(args: &FormatCommandArguments) -> Result<(), KdlFmtError> {
+    let path = std::path::PathBuf::from_str(&args.input)
+        .map_err(|_| KdlFmtError::InvalidPathError(args.input.clone()))?;
+
+    let walker = setup_walker(&path);
 
     let overall_start_time = std::time::Instant::now();
 
@@ -27,7 +45,7 @@ pub fn run(args: &FormatCommandArguments) -> Result<(), KdlFmtError> {
             let input = read_file(file_path)?;
 
             let parsed = parse_kdl(&input)
-                .map_err(|error| KdlFmtError::ParseError(file_path.to_path_buf(), error))?;
+                .map_err(|error| KdlFmtError::ParseError(Some(file_path.to_path_buf()), error))?;
 
             let formatted = format_kdl(parsed);
 
@@ -48,4 +66,13 @@ pub fn run(args: &FormatCommandArguments) -> Result<(), KdlFmtError> {
     print_format_finished(file_count, overall_start_time.elapsed());
 
     Ok(())
+}
+
+#[inline]
+pub fn run(args: &FormatCommandArguments) -> Result<(), KdlFmtError> {
+    if args.input == "-" {
+        run_from_stdin(args)
+    } else {
+        run_from_args(args)
+    }
 }

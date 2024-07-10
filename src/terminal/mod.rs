@@ -52,19 +52,3 @@ pub fn print_check_changed_file(path: &std::path::Path) {
             .red()
     );
 }
-
-#[inline]
-pub fn print_check_finished(file_count: usize) {
-    if file_count == 0 {
-        info!("All files are formatted!");
-    } else {
-        let file_or_files = if file_count == 1 { "file" } else { "files" };
-
-        error!(
-            "{}",
-            style(format!("{file_count} unformatted {file_or_files}"))
-                .bold()
-                .red()
-        );
-    }
-}
