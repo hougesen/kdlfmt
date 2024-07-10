@@ -29,14 +29,18 @@ test-coverage:
     cargo llvm-cov clean
     cargo llvm-cov --all-features --open
 
-precommit:
-    cargo clean
+format:
     cargo fmt
     just --fmt --unstable .
+    mdsf format . 
+    npx prettier --write --cache .
+
+precommit:
+    cargo clean
+    just format 
     just build
     just lint
     just test
-    npx prettier --write --cache .
     typos .
 
 publish:

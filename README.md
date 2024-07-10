@@ -50,7 +50,7 @@ eval "$(kdlfmt completions bash)"
 
 Add the following to your `.zshrc`:
 
-```bash
+```zsh
 eval "$(kdlfmt completions zsh)"
 ```
 

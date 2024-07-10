@@ -1,8 +1,10 @@
 {
-  "$schema": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.1.0/mdsf.schema.json",
+  "$schema": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.2.1/mdsf.schema.json",
   "languages": {
     "bash": "shfmt",
     "fish": "fish_indent",
-    "shell": "shfmt"
+    "kdl": "kdlfmt",
+    "shell": "shfmt",
+    "zsh": "shfmt"
   }
 }
