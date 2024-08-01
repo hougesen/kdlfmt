@@ -4,11 +4,9 @@ updates:
     directory: /
     schedule:
       interval: monthly
-    assignees: [hougesen]
-    open-pull-requests-limit: 25
+    open-pull-requests-limit: 100
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: monthly
-    assignees: [hougesen]
-    open-pull-requests-limit: 25
+    open-pull-requests-limit: 100
