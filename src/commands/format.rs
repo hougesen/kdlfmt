@@ -23,10 +23,20 @@ fn run_from_stdin(_args: &FormatCommandArguments) -> Result<(), KdlFmtError> {
 
 #[inline]
 fn run_from_args(args: &FormatCommandArguments) -> Result<(), KdlFmtError> {
-    let path = std::path::PathBuf::from_str(&args.input)
-        .map_err(|_| KdlFmtError::InvalidPathError(args.input.clone()))?;
+    let mut paths = Vec::new();
 
-    let walker = setup_walker(&path);
+    for path in &args.input {
+        paths.push(
+            std::path::PathBuf::from_str(path)
+                .map_err(|_| KdlFmtError::InvalidPathError(path.clone()))?,
+        );
+    }
+
+    if paths.is_empty() {
+        return Ok(());
+    }
+
+    let walker = setup_walker(paths);
 
     let overall_start_time = std::time::Instant::now();
 
@@ -70,7 +80,7 @@ fn run_from_args(args: &FormatCommandArguments) -> Result<(), KdlFmtError> {
 
 #[inline]
 pub fn run(args: &FormatCommandArguments) -> Result<(), KdlFmtError> {
-    if args.input == "-" {
+    if args.input.len() == 1 && args.input.first().is_some_and(|v| v == "-") {
         run_from_stdin(args)
     } else {
         run_from_args(args)

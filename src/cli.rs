@@ -26,7 +26,7 @@ pub struct FormatCommandArguments {
     /// Path to file OR directory.
     /// Use "-" to read from stdin.  
     #[arg()]
-    pub input: String,
+    pub input: Vec<String>,
 
     #[arg(long, value_enum)]
     pub log_level: Option<LogLevel>,
