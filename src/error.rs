@@ -2,7 +2,7 @@
 pub enum KdlFmtError {
     IoError(std::io::Error),
     InvalidPathError(String),
-    ParseError(Option<std::path::PathBuf>, kdl::KdlError),
+    ParseError(Option<std::path::PathBuf>, kdl::KdlParseFailure),
     ReadStdinError(std::io::Error),
     CheckModeChanges,
 }

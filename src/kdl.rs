@@ -1,11 +1,11 @@
 #[inline]
-pub fn parse_kdl(input: &str) -> Result<kdl::KdlDocument, kdl::KdlError> {
+pub fn parse_kdl(input: &str) -> Result<kdl::KdlDocument, kdl::KdlParseFailure> {
     input.parse::<kdl::KdlDocument>()
 }
 
 #[inline]
 pub fn format_kdl(mut input: kdl::KdlDocument) -> String {
-    input.fmt();
+    input.autoformat();
 
     input.to_string()
 }
