@@ -2,7 +2,7 @@
 pub enum KdlFmtError {
     IoError(std::io::Error),
     InvalidPathError(String),
-    ParseError(Option<std::path::PathBuf>, kdl::KdlParseFailure),
+    ParseError(Option<std::path::PathBuf>, kdl::KdlError),
     ReadStdinError(std::io::Error),
     CheckModeChanges,
 }
@@ -21,7 +21,6 @@ impl std::fmt::Display for KdlFmtError {
                 }
             }
             Self::InvalidPathError(path) => write!(f, "'{path}' is not a valid path"),
-
             Self::CheckModeChanges => write!(f, "Found changes while running in check mode"),
         }
     }

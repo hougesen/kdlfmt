@@ -1,11 +1,13 @@
 #[inline]
-pub fn parse_kdl(input: &str) -> Result<kdl::KdlDocument, kdl::KdlParseFailure> {
-    input.parse::<kdl::KdlDocument>()
+pub fn parse_kdl(input: &str) -> Result<kdl::KdlDocument, kdl::KdlError> {
+    let parsed = input.parse::<kdl::KdlDocument>()?;
+
+    Ok(parsed)
 }
 
 #[inline]
 pub fn format_kdl(mut input: kdl::KdlDocument) -> String {
-    input.autoformat();
+    input.fmt();
 
     input.to_string()
 }
