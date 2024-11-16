@@ -10,7 +10,6 @@ keywords = ["kdl", "formatter", "pretty-printing", "code-formatter"]
 homepage = "https://github.com/hougesen/kdlfmt"
 readme = "README.md"
 categories = ["development-tools", "command-line-utilities"]
-rust-version = "1.74"
 
 [dependencies]
 clap = { version = "4.5.20", features = ["derive"] }
@@ -20,3 +19,4 @@ env_logger = "0.11.5"
 ignore = "0.4.23"
 kdl = "4.6.0"
 log = "0.4.22"
+miette = { version = "5.10.0", features = ["fancy"] }

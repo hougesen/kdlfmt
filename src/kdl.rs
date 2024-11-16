@@ -1,5 +1,5 @@
 #[inline]
-pub fn parse_kdl(input: &str) -> Result<kdl::KdlDocument, kdl::KdlError> {
+pub fn parse_kdl(input: &str) -> miette::Result<kdl::KdlDocument> {
     let parsed = input.parse::<kdl::KdlDocument>()?;
 
     Ok(parsed)

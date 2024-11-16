@@ -2,7 +2,7 @@
 pub enum KdlFmtError {
     IoError(std::io::Error),
     InvalidPathError(String),
-    ParseError(Option<std::path::PathBuf>, kdl::KdlError),
+    ParseError(Option<std::path::PathBuf>, miette::Error),
     ReadStdinError(std::io::Error),
     CheckModeChanges,
 }
@@ -15,9 +15,9 @@ impl std::fmt::Display for KdlFmtError {
             Self::ReadStdinError(error) => write!(f, "Error reading input from stdin - {error}"),
             Self::ParseError(maybe_path, error) => {
                 if let Some(path) = maybe_path {
-                    write!(f, "Error parsing file '{}' - {error}", path.display())
+                    write!(f, "Error parsing file '{}' - {error:?}", path.display())
                 } else {
-                    write!(f, "Error parsing file - {error}")
+                    write!(f, "Error parsing content - {error:?}")
                 }
             }
             Self::InvalidPathError(path) => write!(f, "'{path}' is not a valid path"),
