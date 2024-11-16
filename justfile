@@ -45,6 +45,7 @@ precommit:
     just build
     just lint
     just test
+    cargo msrv find --write-msrv
     typos --exclude CHANGELOG.md .
 
 publish:
