@@ -4,6 +4,7 @@ use self::{cli::Cli, commands::execute_command, terminal::print_error};
 
 mod cli;
 mod commands;
+mod config;
 mod error;
 mod fs;
 mod kdl;

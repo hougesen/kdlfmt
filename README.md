@@ -15,6 +15,7 @@ Commands:
   format       Format kdl files
   check        Validate files are formatted
   completions  Generate shell completions
+  init         Initialize config
   help         Print this message or the help of the given subcommand(s)
 
 Options:
@@ -48,10 +49,10 @@ kdlfmt format PATH
 ```
 Format kdl files
 
-Usage: kdlfmt format [OPTIONS] <INPUT>
+Usage: kdlfmt format [OPTIONS] [INPUT]...
 
 Arguments:
-  <INPUT>  Path to file OR directory. Use "-" to read from stdin
+  [INPUT]...  Path to file OR directory. Use "-" to read from stdin
 
 Options:
       --log-level <LOG_LEVEL>  [possible values: trace, debug, info, warn, error, off]
@@ -75,10 +76,10 @@ kdlfmt check PATH
 ```
 Validate files are formatted
 
-Usage: kdlfmt check [OPTIONS] <INPUT>
+Usage: kdlfmt check [OPTIONS] [INPUT]...
 
 Arguments:
-  <INPUT>  Path to file OR directory. Use "-" to read from stdin
+  [INPUT]...  Path to file OR directory. Use "-" to read from stdin
 
 Options:
       --log-level <LOG_LEVEL>  [possible values: trace, debug, info, warn, error, off]

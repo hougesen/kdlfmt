@@ -19,12 +19,15 @@ pub enum Commands {
 
     /// Generate shell completions
     Completions(ShellCompletionCommandArguments),
+
+    /// Initialize config
+    Init(InitCommandArguments),
 }
 
 #[derive(Args, Debug)]
 pub struct FormatCommandArguments {
     /// Path to file OR directory.
-    /// Use "-" to read from stdin.  
+    /// Use "-" to read from stdin.
     #[arg()]
     pub input: Vec<String>,
 
@@ -57,4 +60,15 @@ pub fn read_stdin() -> std::io::Result<String> {
     stdin.lock().read_to_string(&mut input)?;
 
     Ok(input)
+}
+
+#[derive(Args, Debug)]
+pub struct InitCommandArguments {
+    /// Path to file OR directory.
+    /// Use "-" to read from stdin.
+    #[arg()]
+    pub input: Vec<String>,
+
+    #[arg(long, value_enum)]
+    pub log_level: Option<LogLevel>,
 }

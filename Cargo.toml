@@ -18,6 +18,6 @@ clap_complete = "4.5.38"
 console = "0.15.8"
 env_logger = "0.11.5"
 ignore = "0.4.23"
-kdl = "4.7.0"
+kdl = { version = "6.0.0", features = ["v1"] }
 log = "0.4.22"
 miette = { version = "7.4.0", features = ["fancy"] }
