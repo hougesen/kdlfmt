@@ -1,7 +1,7 @@
 use ec4rs::property::IndentStyle;
 use kdl::{FormatConfig, KdlDocument};
 
-use crate::error::KdlFmtError;
+use crate::{error::KdlFmtError, kdl::parse_kdl};
 
 #[derive(Debug, Clone)]
 pub struct KdlFmtConfig {
@@ -29,9 +29,7 @@ impl KdlFmtConfig {
 
     #[inline]
     fn parse_config(config: &str) -> miette::Result<KdlDocument> {
-        let c = kdl::KdlDocument::parse_v1(config)?;
-
-        Ok(c)
+        Ok(parse_kdl(config, None)?.0)
     }
 
     #[inline]
