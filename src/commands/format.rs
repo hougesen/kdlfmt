@@ -10,20 +10,18 @@ use crate::{
 };
 
 #[inline]
-fn run_from_stdin(
-    _args: &FormatCommandArguments,
-    config: &KdlFmtConfig,
-) -> Result<(), KdlFmtError> {
+fn run_from_stdin(args: &FormatCommandArguments, config: &KdlFmtConfig) -> Result<(), KdlFmtError> {
     let input = read_stdin().map_err(KdlFmtError::ReadStdinError)?;
 
-    let parsed = parse_kdl(&input).map_err(|error| KdlFmtError::ParseError(None, error))?;
+    let (parsed, version) = parse_kdl(&input, args.kdl_version)
+        .map_err(|error| KdlFmtError::ParseError(None, error))?;
 
     let actual_config =
         KdlFmtConfig::get_editorconfig_or_default(config, &std::path::PathBuf::from("dummy.kdl"));
 
     let format_config = actual_config.get_formatter_config();
 
-    let formatted = format_kdl(parsed, &format_config);
+    let formatted = format_kdl(parsed, &format_config, version);
 
     println!("{formatted}");
 
@@ -63,7 +61,7 @@ fn run_from_args(args: &FormatCommandArguments, config: &KdlFmtConfig) -> Result
         {
             let input = read_file(file_path)?;
 
-            let parsed = parse_kdl(&input)
+            let (parsed, version) = parse_kdl(&input, args.kdl_version)
                 .map_err(|error| KdlFmtError::ParseError(Some(file_path.to_path_buf()), error))?;
 
             let actual_config = KdlFmtConfig::get_editorconfig_or_default(
@@ -73,7 +71,7 @@ fn run_from_args(args: &FormatCommandArguments, config: &KdlFmtConfig) -> Result
 
             let format_config = actual_config.get_formatter_config();
 
-            let formatted = format_kdl(parsed, &format_config);
+            let formatted = format_kdl(parsed, &format_config, version);
 
             save_file(file_path, &formatted).map_err(KdlFmtError::from)?;
 

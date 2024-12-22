@@ -17,11 +17,11 @@ pub enum Commands {
     /// Validate files are formatted
     Check(FormatCommandArguments),
 
+    /// Initialize formatter config
+    Init(InitCommandArguments),
+
     /// Generate shell completions
     Completions(ShellCompletionCommandArguments),
-
-    /// Initialize config
-    Init(InitCommandArguments),
 }
 
 #[derive(Args, Debug)]
@@ -30,6 +30,11 @@ pub struct FormatCommandArguments {
     /// Use "-" to read from stdin.
     #[arg()]
     pub input: Vec<String>,
+
+    /// kdl specification to use.
+    /// By default all versions are tried
+    #[arg(long, value_enum)]
+    pub kdl_version: Option<KdlVersion>,
 
     #[arg(long, value_enum)]
     pub log_level: Option<LogLevel>,
@@ -69,6 +74,18 @@ pub struct InitCommandArguments {
     #[arg()]
     pub input: Vec<String>,
 
+    /// kdl specification to use.
+    /// By default all versions are tried
+    #[arg(long, value_enum)]
+    pub kdl_version: Option<KdlVersion>,
+
     #[arg(long, value_enum)]
     pub log_level: Option<LogLevel>,
+}
+
+#[derive(clap::ValueEnum, Clone, Copy, PartialEq, Eq, Debug, Default)]
+pub enum KdlVersion {
+    V1,
+    #[default]
+    V2,
 }

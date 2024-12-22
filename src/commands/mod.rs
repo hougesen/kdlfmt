@@ -31,7 +31,7 @@ pub fn execute_command(command: Commands) -> Result<(), KdlFmtError> {
         Commands::Init(args) => {
             setup_logger(args.log_level.unwrap_or(LogLevel::Debug));
 
-            init::run()?;
+            init::run(&args)?;
 
             Ok(())
         }
