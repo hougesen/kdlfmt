@@ -2,6 +2,7 @@ use std::str::FromStr;
 
 use crate::{
     cli::{read_stdin, FormatCommandArguments},
+    config::KdlFmtConfig,
     error::KdlFmtError,
     fs::{read_file, save_file, setup_walker, KDL_FILE_EXTENSION},
     kdl::{format_kdl, parse_kdl},
@@ -11,11 +12,16 @@ use crate::{
 #[inline]
 fn run_from_stdin(
     _args: &FormatCommandArguments,
-    format_config: kdl::FormatConfig,
+    config: &KdlFmtConfig,
 ) -> Result<(), KdlFmtError> {
     let input = read_stdin().map_err(KdlFmtError::ReadStdinError)?;
 
     let parsed = parse_kdl(&input).map_err(|error| KdlFmtError::ParseError(None, error))?;
+
+    let actual_config =
+        KdlFmtConfig::get_editorconfig_or_default(config, &std::path::PathBuf::from("dummy.kdl"));
+
+    let format_config = actual_config.get_formatter_config();
 
     let formatted = format_kdl(parsed, &format_config);
 
@@ -25,10 +31,7 @@ fn run_from_stdin(
 }
 
 #[inline]
-fn run_from_args(
-    args: &FormatCommandArguments,
-    format_config: kdl::FormatConfig,
-) -> Result<(), KdlFmtError> {
+fn run_from_args(args: &FormatCommandArguments, config: &KdlFmtConfig) -> Result<(), KdlFmtError> {
     let mut paths = Vec::new();
 
     for path in &args.input {
@@ -63,6 +66,13 @@ fn run_from_args(
             let parsed = parse_kdl(&input)
                 .map_err(|error| KdlFmtError::ParseError(Some(file_path.to_path_buf()), error))?;
 
+            let actual_config = KdlFmtConfig::get_editorconfig_or_default(
+                config,
+                &std::path::PathBuf::from(entry.path()),
+            );
+
+            let format_config = actual_config.get_formatter_config();
+
             let formatted = format_kdl(parsed, &format_config);
 
             save_file(file_path, &formatted).map_err(KdlFmtError::from)?;
@@ -85,13 +95,10 @@ fn run_from_args(
 }
 
 #[inline]
-pub fn run(
-    args: &FormatCommandArguments,
-    format_config: kdl::FormatConfig,
-) -> Result<(), KdlFmtError> {
+pub fn run(args: &FormatCommandArguments, config: &KdlFmtConfig) -> Result<(), KdlFmtError> {
     if args.input.len() == 1 && args.input.first().is_some_and(|v| v == "-") {
-        run_from_stdin(args, format_config)
+        run_from_stdin(args, config)
     } else {
-        run_from_args(args, format_config)
+        run_from_args(args, config)
     }
 }

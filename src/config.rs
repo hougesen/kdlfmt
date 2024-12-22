@@ -1,77 +1,139 @@
+use ec4rs::property::IndentStyle;
 use kdl::{FormatConfig, KdlDocument};
 
 use crate::error::KdlFmtError;
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct KdlFmtConfig {
-    pub indent: u8,
+    from_kdlfmt_file: bool,
+    pub indent: String,
+    pub use_tabs: bool,
 }
 
 impl Default for KdlFmtConfig {
+    #[inline]
     fn default() -> Self {
-        KdlFmtConfig {
-            indent: FormatConfig::default()
-                .indent
-                .len()
-                .max(0)
-                .min(u8::MAX as usize) as u8,
+        Self {
+            from_kdlfmt_file: false,
+            indent: FormatConfig::default().indent.to_string(),
+            use_tabs: false,
         }
     }
 }
 
 impl KdlFmtConfig {
-    const fn filename() -> &'static str {
+    #[inline]
+    pub const fn filename() -> &'static str {
         "kdlfmt.kdl"
     }
 
+    #[inline]
     fn parse_config(config: &str) -> miette::Result<KdlDocument> {
-        let c = kdl::KdlDocument::parse_v1(&config)?;
+        let c = kdl::KdlDocument::parse_v1(config)?;
+
         Ok(c)
     }
 
+    #[inline]
     pub fn load() -> Result<Self, KdlFmtError> {
-        let mut config = KdlFmtConfig::default();
+        let mut config = Self::default();
 
         if let Ok(config_str) = std::fs::read_to_string(Self::filename()) {
             // TODO: custom parse error
             let doc = Self::parse_config(&config_str)
                 .map_err(|error| KdlFmtError::ParseError(None, error))?;
 
-            if let Some(indent) = doc.get_arg("indent") {
-                if let Some(count) = indent.as_integer() {
-                    config.indent = count.max(0).min(u8::MAX as i128) as u8;
-                }
+            if doc
+                .get_arg(Self::use_tabs_key())
+                .and_then(kdl::KdlValue::as_bool)
+                == Some(true)
+            {
+                config.use_tabs = true;
+                config.indent = Self::get_indent(1, true);
+                config.from_kdlfmt_file = true;
+            }
+
+            if let Some(indent_size) = doc
+                .get_arg(Self::indent_size_key())
+                .and_then(kdl::KdlValue::as_integer)
+            {
+                config.indent = Self::get_indent(
+                    indent_size.max(0).min(usize::MAX as i128) as usize,
+                    config.use_tabs,
+                );
+                config.from_kdlfmt_file = true;
             }
         }
 
         Ok(config)
     }
 
-    pub fn get_indent(&self) -> String {
+    #[inline]
+    pub fn get_indent(indent: usize, use_tabs: bool) -> String {
         let mut spaces = String::new();
 
-        for _ in 0..self.indent {
-            spaces.push(' ');
+        for _ in 0..indent {
+            if use_tabs {
+                spaces.push('\t');
+            } else {
+                spaces.push(' ');
+            }
         }
 
         spaces
     }
 
-    pub fn init() -> std::io::Result<()> {
-        let config = Self::default();
+    #[inline]
+    pub const fn indent_size_key() -> &'static str {
+        "indent_size"
+    }
 
-        let mut doc = kdl::KdlDocument::new();
+    #[inline]
+    pub const fn use_tabs_key() -> &'static str {
+        "use_tabs"
+    }
 
-        let mut indent_node = kdl::KdlNode::new("indent");
-        indent_node.push(kdl::KdlEntry::from(kdl::KdlValue::Integer(i128::from(
-            config.indent,
-        ))));
-        doc.nodes_mut().push(indent_node);
+    #[inline]
+    pub fn get_editorconfig_or_default(&self, path: &std::path::Path) -> Self {
+        if !self.from_kdlfmt_file {
+            if let Ok(mut properties) = ec4rs::properties_of(path) {
+                properties.use_fallbacks();
 
-        let indent_spaces = config.get_indent();
-        let autoformat_config = kdl::FormatConfig::builder().indent(&indent_spaces).build();
-        doc.autoformat_config(&autoformat_config);
+                let use_tabs = properties
+                    .get::<IndentStyle>()
+                    .is_ok_and(|indent_style| matches!(indent_style, IndentStyle::Tabs));
 
-        std::fs::write(Self::filename(), &doc.to_string())
+                let indent_size = properties.get::<ec4rs::property::IndentSize>().map_or(
+                    if use_tabs { 1 } else { self.indent.len() },
+                    |value| match value {
+                        ec4rs::property::IndentSize::Value(value) => value,
+                        ec4rs::property::IndentSize::UseTabWidth => {
+                            if let Ok(ec4rs::property::TabWidth::Value(value)) =
+                                properties.get::<ec4rs::property::TabWidth>()
+                            {
+                                value
+                            } else {
+                                1
+                            }
+                        }
+                    },
+                );
+
+                let indent = Self::get_indent(indent_size, use_tabs);
+
+                return Self {
+                    use_tabs,
+                    indent,
+                    from_kdlfmt_file: false,
+                };
+            }
+        }
+
+        self.clone()
+    }
+
+    #[inline]
+    pub fn get_formatter_config(&self) -> FormatConfig<'_> {
+        kdl::FormatConfig::builder().indent(&self.indent).build()
     }
 }
