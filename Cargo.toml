@@ -16,8 +16,9 @@ rust-version = "1.74"
 clap = { version = "4.5.21", features = ["derive"] }
 clap_complete = "4.5.38"
 console = "0.15.8"
+ec4rs = "1.1.1"
 env_logger = "0.11.5"
 ignore = "0.4.23"
-kdl = { version = "6.0.0", features = ["v1"] }
+kdl = { version = "6.1.0", features = ["v1"] }
 log = "0.4.22"
 miette = { version = "7.4.0", features = ["fancy"] }

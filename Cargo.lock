@@ -221,6 +221,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "22ec99545bb0ed0ea7bb9b8e1e9122ea386ff8a48c0922e43f36d45ab09e0e80"
 
 [[package]]
+name = "ec4rs"
+version = "1.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "acf65d056c7da9c971c2847ce250fd1f0f9659d5718845c3ec0ad95f5668352c"
+
+[[package]]
 name = "encode_unicode"
 version = "0.3.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -331,9 +337,9 @@ dependencies = [
 
 [[package]]
 name = "kdl"
-version = "6.0.0"
+version = "6.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4c423d9cfc63a6661b9866e3c9273143d90e5022e3916d7b1be8ba618e94eaab"
+checksum = "a927c788db5413fbaced8fc5ac08a4a341c50766cba1d363ba3e25f3db343af0"
 dependencies = [
  "kdl 4.7.0",
  "miette",
@@ -349,9 +355,10 @@ dependencies = [
  "clap",
  "clap_complete",
  "console",
+ "ec4rs",
  "env_logger",
  "ignore",
- "kdl 6.0.0",
+ "kdl 6.1.0",
  "log",
  "miette",
 ]
