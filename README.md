@@ -14,8 +14,8 @@ Usage: kdlfmt <COMMAND>
 Commands:
   format       Format kdl files
   check        Validate files are formatted
+  init         Initialize formatter config
   completions  Generate shell completions
-  init         Initialize config
   help         Print this message or the help of the given subcommand(s)
 
 Options:
@@ -55,9 +55,10 @@ Arguments:
   [INPUT]...  Path to file OR directory. Use "-" to read from stdin
 
 Options:
-      --log-level <LOG_LEVEL>  [possible values: trace, debug, info, warn, error, off]
-  -h, --help                   Print help
-  -V, --version                Print version
+      --kdl-version <KDL_VERSION>  kdl specification to use. By default all versions are tried [possible values: v1, v2]
+      --log-level <LOG_LEVEL>      [possible values: trace, debug, info, warn, error, off]
+  -h, --help                       Print help
+  -V, --version                    Print version
 
 ```
 
@@ -82,9 +83,10 @@ Arguments:
   [INPUT]...  Path to file OR directory. Use "-" to read from stdin
 
 Options:
-      --log-level <LOG_LEVEL>  [possible values: trace, debug, info, warn, error, off]
-  -h, --help                   Print help
-  -V, --version                Print version
+      --kdl-version <KDL_VERSION>  kdl specification to use. By default all versions are tried [possible values: v1, v2]
+      --log-level <LOG_LEVEL>      [possible values: trace, debug, info, warn, error, off]
+  -h, --help                       Print help
+  -V, --version                    Print version
 
 ```
 

@@ -1,7 +1,7 @@
-use crate::config::KdlFmtConfig;
+use crate::{cli::InitCommandArguments, config::KdlFmtConfig, kdl::format_kdl};
 
 #[inline]
-pub fn run() -> std::io::Result<()> {
+pub fn run(args: &InitCommandArguments) -> std::io::Result<()> {
     let config = KdlFmtConfig::default();
 
     let mut doc = kdl::KdlDocument::new();
@@ -16,8 +16,9 @@ pub fn run() -> std::io::Result<()> {
     use_tab_node.push(kdl::KdlEntry::from(kdl::KdlValue::Bool(config.use_tabs)));
     doc.nodes_mut().push(use_tab_node);
 
-    let autoformat_config = kdl::FormatConfig::builder().indent(&config.indent).build();
-    doc.autoformat_config(&autoformat_config);
+    let format_config = kdl::FormatConfig::builder().indent(&config.indent).build();
 
-    std::fs::write(KdlFmtConfig::filename(), doc.to_string())
+    let doc = format_kdl(doc, &format_config, args.kdl_version.unwrap_or_default());
+
+    std::fs::write(KdlFmtConfig::filename(), &doc)
 }
