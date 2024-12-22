@@ -24,13 +24,13 @@ pub fn format_kdl(
     format_config: &kdl::FormatConfig,
     version: KdlVersion,
 ) -> String {
+    input.autoformat_config(format_config);
+
     if KdlVersion::V1 == version {
         input.ensure_v1();
     } else {
         input.ensure_v2();
     }
-
-    input.autoformat_config(format_config);
 
     input.to_string()
 }
