@@ -9,12 +9,15 @@ use crate::{
 };
 
 #[inline]
-fn run_from_stdin(_args: &FormatCommandArguments) -> Result<(), KdlFmtError> {
+fn run_from_stdin(
+    _args: &FormatCommandArguments,
+    format_config: kdl::FormatConfig,
+) -> Result<(), KdlFmtError> {
     let input = read_stdin().map_err(KdlFmtError::ReadStdinError)?;
 
     let parsed = parse_kdl(&input).map_err(|error| KdlFmtError::ParseError(None, error))?;
 
-    let formatted = format_kdl(parsed);
+    let formatted = format_kdl(parsed, &format_config);
 
     if input == formatted {
         Ok(())
@@ -24,7 +27,10 @@ fn run_from_stdin(_args: &FormatCommandArguments) -> Result<(), KdlFmtError> {
 }
 
 #[inline]
-pub fn run_from_args(args: &FormatCommandArguments) -> Result<(), KdlFmtError> {
+pub fn run_from_args(
+    args: &FormatCommandArguments,
+    format_config: kdl::FormatConfig,
+) -> Result<(), KdlFmtError> {
     let mut paths = Vec::new();
 
     for path in &args.input {
@@ -55,7 +61,7 @@ pub fn run_from_args(args: &FormatCommandArguments) -> Result<(), KdlFmtError> {
             let parsed = parse_kdl(&input)
                 .map_err(|error| KdlFmtError::ParseError(Some(file_path.to_path_buf()), error))?;
 
-            let formatted = format_kdl(parsed);
+            let formatted = format_kdl(parsed, &format_config);
 
             if formatted != input {
                 print_check_changed_file(file_path);
@@ -73,10 +79,13 @@ pub fn run_from_args(args: &FormatCommandArguments) -> Result<(), KdlFmtError> {
 }
 
 #[inline]
-pub fn run(args: &FormatCommandArguments) -> Result<(), KdlFmtError> {
+pub fn run(
+    args: &FormatCommandArguments,
+    format_config: kdl::FormatConfig,
+) -> Result<(), KdlFmtError> {
     if args.input.len() == 1 && args.input.first().is_some_and(|v| v == "-") {
-        run_from_stdin(args)
+        run_from_stdin(args, format_config)
     } else {
-        run_from_args(args)
+        run_from_args(args, format_config)
     }
 }
