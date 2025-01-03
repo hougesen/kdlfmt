@@ -19,6 +19,6 @@ console = "0.15.10"
 ec4rs = "1.1.1"
 env_logger = "0.11.6"
 ignore = "0.4.23"
-kdl = { version = "6.2.1", features = ["v1"] }
+kdl = { version = "6.2.2", features = ["v1"] }
 log = "0.4.22"
 miette = { version = "7.4.0", features = ["fancy"] }
