@@ -337,9 +337,9 @@ dependencies = [
 
 [[package]]
 name = "kdl"
-version = "6.2.2"
+version = "6.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6d63de1aa3d632a8dd61da7cddfc499e9f88e6265d85bd84002419c3cdd3dc8f"
+checksum = "0a029b7a3f0cb86b0fcfd09718eeba23399d285f1827527ab88e88e6f44f6456"
 dependencies = [
  "kdl 4.7.1",
  "miette 7.4.0",
@@ -358,7 +358,7 @@ dependencies = [
  "ec4rs",
  "env_logger",
  "ignore",
- "kdl 6.2.2",
+ "kdl 6.3.2",
  "log",
  "miette 7.4.0",
 ]
