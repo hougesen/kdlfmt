@@ -46,6 +46,7 @@ precommit:
     just lint
     just test
     typos --exclude CHANGELOG.md .
+    dist init --yes
 
 publish:
     just build

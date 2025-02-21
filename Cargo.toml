@@ -25,3 +25,8 @@ ignore = "0.4.23"
 kdl = { version = "6.3.4", features = ["v1"] }
 log = "0.4.26"
 miette = { version = "7.5.0", features = ["fancy"] }
+
+# The profile that 'dist' will build with
+[profile.dist]
+inherits = "release"
+lto = "thin"

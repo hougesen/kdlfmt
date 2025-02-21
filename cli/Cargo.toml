@@ -11,6 +11,12 @@ homepage = { workspace = true }
 readme = { workspace = true }
 categories = { workspace = true }
 
+[package.metadata.wix]
+upgrade-guid = "66958F36-1ACD-4F8A-9770-F49752B07CDE"
+path-guid = "AB199752-4E1B-4895-8EA3-1E2EE6DC39C2"
+license = false
+eula = false
+
 [dependencies]
 clap = { workspace = true }
 clap_complete = { workspace = true }
