@@ -1,0 +1,23 @@
+[package]
+name = "kdlfmt"
+version = { workspace = true }
+edition = { workspace = true }
+description = { workspace = true }
+authors = { workspace = true }
+license = { workspace = true }
+repository = { workspace = true }
+keywords = { workspace = true }
+homepage = { workspace = true }
+readme = { workspace = true }
+categories = { workspace = true }
+
+[dependencies]
+clap = { workspace = true }
+clap_complete = { workspace = true }
+console = { workspace = true }
+ec4rs = { workspace = true }
+env_logger = { workspace = true }
+ignore = { workspace = true }
+kdl = { workspace = true }
+log = { workspace = true }
+miette = { workspace = true }

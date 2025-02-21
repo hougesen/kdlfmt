@@ -1,5 +1,9 @@
-[package]
-name = "kdlfmt"
+[workspace]
+members = ["cli"]
+exclude = []
+resolver = "2"
+
+[workspace.package]
 version = "0.0.11"
 edition = "2021"
 description = "A code formatter for kdl documents."
@@ -10,9 +14,8 @@ keywords = ["kdl", "formatter", "pretty-printing", "code-formatter"]
 homepage = "https://github.com/hougesen/kdlfmt"
 readme = "README.md"
 categories = ["development-tools", "command-line-utilities"]
-rust-version = "1.74"
 
-[dependencies]
+[workspace.dependencies]
 clap = { version = "4.5.30", features = ["derive"] }
 clap_complete = "4.5.45"
 console = "0.15.10"
