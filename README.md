@@ -7,7 +7,9 @@ kdlfmt is a thin cli wrapper built on-top of the official `kdl` parser for Rust 
 <!-- START_SECTION:base-command-help -->
 
 ```
+kdlfmt 0.0.12
 A code formatter for kdl documents.
+Mads Hougesen <mads@mhouge.dk>
 
 Usage: kdlfmt <COMMAND>
 
