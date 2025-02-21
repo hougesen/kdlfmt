@@ -1,0 +1,29 @@
+[package]
+name = "kdlfmt"
+version = { workspace = true }
+edition = { workspace = true }
+description = { workspace = true }
+authors = { workspace = true }
+license = { workspace = true }
+repository = { workspace = true }
+keywords = { workspace = true }
+homepage = { workspace = true }
+readme = { workspace = true }
+categories = { workspace = true }
+
+[package.metadata.wix]
+upgrade-guid = "66958F36-1ACD-4F8A-9770-F49752B07CDE"
+path-guid = "AB199752-4E1B-4895-8EA3-1E2EE6DC39C2"
+license = false
+eula = false
+
+[dependencies]
+clap = { workspace = true }
+clap_complete = { workspace = true }
+console = { workspace = true }
+ec4rs = { workspace = true }
+env_logger = { workspace = true }
+ignore = { workspace = true }
+kdl = { workspace = true }
+log = { workspace = true }
+miette = { workspace = true }
