@@ -18,7 +18,7 @@ categories = ["development-tools", "command-line-utilities"]
 [workspace.dependencies]
 clap = { version = "4.5.31", features = ["derive"] }
 clap_complete = "4.5.46"
-console = "0.15.10"
+console = "0.15.11"
 ec4rs = "1.1.1"
 env_logger = "0.11.6"
 ignore = "0.4.23"
