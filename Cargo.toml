@@ -20,7 +20,7 @@ clap = { version = "4.5.31", features = ["derive"] }
 clap_complete = "4.5.46"
 console = "0.15.11"
 ec4rs = "1.1.1"
-env_logger = "0.11.6"
+env_logger = "0.11.7"
 ignore = "0.4.23"
 kdl = { version = "6.3.4", features = ["v1"] }
 log = "0.4.26"
