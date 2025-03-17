@@ -1,10 +1,10 @@
 use std::str::FromStr;
 
 use crate::{
-    cli::{read_stdin, FormatCommandArguments},
+    cli::{FormatCommandArguments, read_stdin},
     config::KdlFmtConfig,
     error::KdlFmtError,
-    fs::{read_file, setup_walker, KDL_FILE_EXTENSION},
+    fs::{KDL_FILE_EXTENSION, read_file, setup_walker},
     kdl::{format_kdl, parse_kdl},
     terminal::print_check_changed_file,
 };
