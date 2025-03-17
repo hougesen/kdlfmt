@@ -3,15 +3,15 @@ updates:
   - package-ecosystem: github-actions
     directory: /
     schedule:
-      interval: monthly
+      interval: weekly
     open-pull-requests-limit: 100
   - package-ecosystem: cargo
     directory: /
     schedule:
-      interval: monthly
+      interval: weekly
     open-pull-requests-limit: 100
   - package-ecosystem: cargo
     directory: /cli
     schedule:
-      interval: monthly
+      interval: weekly
     open-pull-requests-limit: 100
