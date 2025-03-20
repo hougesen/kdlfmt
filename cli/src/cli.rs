@@ -35,14 +35,20 @@ pub enum Commands {
 #[derive(Args, Debug)]
 pub struct FormatCommandArguments {
     /// Path to file OR directory.
-    /// Use "-" to read from stdin.
+    ///
+    /// Use "-" to read from stdin and print to stdout.
     #[arg()]
     pub input: Vec<String>,
 
     /// kdl specification to use.
+    ///
     /// By default all versions are tried
     #[arg(long, value_enum)]
     pub kdl_version: Option<KdlVersion>,
+
+    /// Read from stdin and print to stdout.
+    #[arg(long)]
+    pub stdin: bool,
 
     #[arg(long, value_enum)]
     pub log_level: Option<LogLevel>,
@@ -78,14 +84,20 @@ pub fn read_stdin() -> std::io::Result<String> {
 #[derive(Args, Debug)]
 pub struct InitCommandArguments {
     /// Path to file OR directory.
-    /// Use "-" to read from stdin.
+    ///
+    /// Use "-" to read from stdin and print to stdout.
     #[arg()]
     pub input: Vec<String>,
 
     /// kdl specification to use.
+    ///
     /// By default all versions are tried
     #[arg(long, value_enum)]
     pub kdl_version: Option<KdlVersion>,
+
+    /// Read from stdin and print to stdout.
+    #[arg(long)]
+    pub stdin: bool,
 
     #[arg(long, value_enum)]
     pub log_level: Option<LogLevel>,

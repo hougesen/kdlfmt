@@ -7,7 +7,7 @@ kdlfmt is a thin cli wrapper built on-top of the official `kdl` parser for Rust 
 <!-- START_SECTION:base-command-help -->
 
 ```
-kdlfmt 0.0.12
+kdlfmt 0.0.14
 A code formatter for kdl documents.
 Mads Hougesen <mads@mhouge.dk>
 
@@ -46,6 +46,12 @@ Once installed the formatted can be invoked by running `kdlfmt format`.
 kdlfmt format PATH
 ```
 
+Or reading from stdin and printing the formatted output to stdout.
+
+```shell
+cat somefile.kdl | kdlfmt format -
+```
+
 <!-- START_SECTION:format-command-help -->
 
 ```
@@ -54,13 +60,30 @@ Format kdl files
 Usage: kdlfmt format [OPTIONS] [INPUT]...
 
 Arguments:
-  [INPUT]...  Path to file OR directory. Use "-" to read from stdin
+  [INPUT]...
+          Path to file OR directory.
+
+          Use "-" to read from stdin and print to stdout.
 
 Options:
-      --kdl-version <KDL_VERSION>  kdl specification to use. By default all versions are tried [possible values: v1, v2]
-      --log-level <LOG_LEVEL>      [possible values: trace, debug, info, warn, error, off]
-  -h, --help                       Print help
-  -V, --version                    Print version
+      --kdl-version <KDL_VERSION>
+          kdl specification to use.
+
+          By default all versions are tried
+
+          [possible values: v1, v2]
+
+      --stdin
+          Read from stdin and print to stdout
+
+      --log-level <LOG_LEVEL>
+          [possible values: trace, debug, info, warn, error, off]
+
+  -h, --help
+          Print help (see a summary with '-h')
+
+  -V, --version
+          Print version
 
 ```
 
@@ -74,6 +97,12 @@ kdlfmt also support validating if files are formatted using the `kdlfmt check` c
 kdlfmt check PATH
 ```
 
+Or reading from stdin.
+
+```shell
+cat somefile.kdl | kdlfmt check -
+```
+
 <!-- START_SECTION:check-command-help -->
 
 ```
@@ -82,13 +111,30 @@ Validate files are formatted
 Usage: kdlfmt check [OPTIONS] [INPUT]...
 
 Arguments:
-  [INPUT]...  Path to file OR directory. Use "-" to read from stdin
+  [INPUT]...
+          Path to file OR directory.
+
+          Use "-" to read from stdin and print to stdout.
 
 Options:
-      --kdl-version <KDL_VERSION>  kdl specification to use. By default all versions are tried [possible values: v1, v2]
-      --log-level <LOG_LEVEL>      [possible values: trace, debug, info, warn, error, off]
-  -h, --help                       Print help
-  -V, --version                    Print version
+      --kdl-version <KDL_VERSION>
+          kdl specification to use.
+
+          By default all versions are tried
+
+          [possible values: v1, v2]
+
+      --stdin
+          Read from stdin and print to stdout
+
+      --log-level <LOG_LEVEL>
+          [possible values: trace, debug, info, warn, error, off]
+
+  -h, --help
+          Print help (see a summary with '-h')
+
+  -V, --version
+          Print version
 
 ```
 
