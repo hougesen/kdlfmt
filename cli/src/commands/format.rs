@@ -4,7 +4,7 @@ use crate::{
     cli::{FormatCommandArguments, read_stdin},
     config::KdlFmtConfig,
     error::KdlFmtError,
-    fs::{KDL_FILE_EXTENSION, read_file, save_file, setup_walker},
+    fs::{KDL_FILE_EXTENSION, setup_walker},
     kdl::{format_kdl, parse_kdl},
     terminal::{print_format_changed_file, print_format_finished, print_format_unchanged_file},
 };
@@ -59,7 +59,7 @@ fn run_from_args(args: &FormatCommandArguments, config: &KdlFmtConfig) -> Result
                 .extension()
                 .is_some_and(|ft| ft == KDL_FILE_EXTENSION)
         {
-            let input = read_file(file_path)?;
+            let input = std::fs::read_to_string(file_path)?;
 
             let (parsed, version) = parse_kdl(&input, args.kdl_version)
                 .map_err(|error| KdlFmtError::ParseError(Some(file_path.to_path_buf()), error))?;
@@ -73,7 +73,7 @@ fn run_from_args(args: &FormatCommandArguments, config: &KdlFmtConfig) -> Result
 
             let formatted = format_kdl(parsed, &format_config, version);
 
-            save_file(file_path, &formatted).map_err(KdlFmtError::from)?;
+            std::fs::write(file_path, &formatted).map_err(KdlFmtError::from)?;
 
             let time_elapsed = file_start_time.elapsed();
 

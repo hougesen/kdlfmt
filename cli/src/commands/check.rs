@@ -4,7 +4,7 @@ use crate::{
     cli::{FormatCommandArguments, read_stdin},
     config::KdlFmtConfig,
     error::KdlFmtError,
-    fs::{KDL_FILE_EXTENSION, read_file, setup_walker},
+    fs::{KDL_FILE_EXTENSION, setup_walker},
     kdl::{format_kdl, parse_kdl},
     terminal::print_check_changed_file,
 };
@@ -60,7 +60,7 @@ pub fn run_from_args(
                 .extension()
                 .is_some_and(|ft| ft == KDL_FILE_EXTENSION)
         {
-            let input = read_file(file_path)?;
+            let input = std::fs::read_to_string(file_path)?;
 
             let (parsed, version) = parse_kdl(&input, args.kdl_version)
                 .map_err(|error| KdlFmtError::ParseError(Some(file_path.to_path_buf()), error))?;
