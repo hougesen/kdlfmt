@@ -91,7 +91,7 @@ pub fn run_from_args(
 
 #[inline]
 pub fn run(args: &FormatCommandArguments, config: &KdlFmtConfig) -> Result<(), KdlFmtError> {
-    if args.input.len() == 1 && args.input.first().is_some_and(|v| v == "-") {
+    if args.stdin || (args.input.len() == 1 && args.input.first().is_some_and(|v| v == "-")) {
         run_from_stdin(args, config)
     } else {
         run_from_args(args, config)
