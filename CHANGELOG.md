@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.0.15...HEAD)
 
+- fix(cargo-dist): manually set gh action runs-on to ubuntu-latest [`#110`](https://github.com/hougesen/kdlfmt/pull/110)
+- build(deps): bump clap from 4.5.35 to 4.5.36 [`#107`](https://github.com/hougesen/kdlfmt/pull/107)
+- build(deps): bump clap from 4.5.34 to 4.5.35 [`#106`](https://github.com/hougesen/kdlfmt/pull/106)
+- build(deps): bump env_logger from 0.11.7 to 0.11.8 [`#105`](https://github.com/hougesen/kdlfmt/pull/105)
+- build(deps): bump clap from 4.5.32 to 4.5.34 [`#103`](https://github.com/hougesen/kdlfmt/pull/103)
+- build(deps): bump log from 0.4.26 to 0.4.27 [`#104`](https://github.com/hougesen/kdlfmt/pull/104)
+- refactor: inline small utility functions [`#102`](https://github.com/hougesen/kdlfmt/pull/102)
+
 #### [v0.0.15](https://github.com/hougesen/kdlfmt/compare/v0.0.14...v0.0.15)
 
 > 20 March 2025
