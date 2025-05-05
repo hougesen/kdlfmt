@@ -39,7 +39,6 @@ changelog:
     npx auto-changelog -u --hide-credit -l 100 -b 100
 
 precommit:
-    cargo clean
     just changelog
     just format
     just build

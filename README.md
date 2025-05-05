@@ -7,7 +7,7 @@ kdlfmt is a thin cli wrapper built on-top of the official `kdl` parser for Rust 
 <!-- START_SECTION:base-command-help -->
 
 ```
-kdlfmt 0.0.15
+kdlfmt 0.0.16
 A code formatter for kdl documents.
 Mads Hougesen <mads@mhouge.dk>
 
@@ -176,7 +176,7 @@ Add the following to your `.bashrc`.
 eval "$(kdlfmt completions bash)"
 ```
 
-#### Bash
+#### Zsh
 
 Add the following to your `.zshrc`:
 

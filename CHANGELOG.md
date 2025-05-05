@@ -2,8 +2,17 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.0.15...HEAD)
+#### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.0.16...HEAD)
 
+#### [v0.0.16](https://github.com/hougesen/kdlfmt/compare/v0.0.15...v0.0.16)
+
+> 5 May 2025
+
+- chore: release v0.0.16 [`#113`](https://github.com/hougesen/kdlfmt/pull/113)
+- build(deps): bump clap_complete from 4.5.47 to 4.5.48 [`#112`](https://github.com/hougesen/kdlfmt/pull/112)
+- build(deps): bump miette from 7.5.0 to 7.6.0 [`#111`](https://github.com/hougesen/kdlfmt/pull/111)
+- build(deps): bump ec4rs from 1.1.1 to 1.2.0 [`#109`](https://github.com/hougesen/kdlfmt/pull/109)
+- build(deps): bump clap from 4.5.36 to 4.5.37 [`#108`](https://github.com/hougesen/kdlfmt/pull/108)
 - fix(cargo-dist): manually set gh action runs-on to ubuntu-latest [`#110`](https://github.com/hougesen/kdlfmt/pull/110)
 - build(deps): bump clap from 4.5.35 to 4.5.36 [`#107`](https://github.com/hougesen/kdlfmt/pull/107)
 - build(deps): bump clap from 4.5.34 to 4.5.35 [`#106`](https://github.com/hougesen/kdlfmt/pull/106)
