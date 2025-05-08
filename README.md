@@ -30,13 +30,30 @@ Options:
 
 ## Installation
 
+### Using Cargo
+
 kdlfmt can be installed using Cargo, the package manager for Rust ([crates.io](https://crates.io/crates/kdlfmt)).
 
 ```shell
 cargo install kdlfmt
 ```
 
-If you do not have/want Rust installed on your device you can find precompiled binaries on the [release](https://github.com/hougesen/kdlfmt/releases) page.
+### Using Homebrew
+
+If you're on macOS or Linux, you can install kdlfmt using Homebrew:
+
+```shell
+# Tap and install
+brew tap hougesen/tap
+brew install kdlfmt
+
+# Or install directly in one command
+brew install hougesen/tap/kdlfmt
+```
+
+### Precompiled Binaries
+
+If you do not have/want Rust or Homebrew installed on your device, you can find precompiled binaries on the [release](https://github.com/hougesen/kdlfmt/releases) page.
 
 ## Usage
 
