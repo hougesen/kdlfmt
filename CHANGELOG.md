@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.0.16...HEAD)
 
+- build: custom gh runner for x86_64-unknown-linux-musl & aarch64-unknown-linux-gnu [`#115`](https://github.com/hougesen/kdlfmt/pull/115)
+- docs: add Homebrew installation instructions [`#114`](https://github.com/hougesen/kdlfmt/pull/114)
+
 #### [v0.0.16](https://github.com/hougesen/kdlfmt/compare/v0.0.15...v0.0.16)
 
 > 5 May 2025
