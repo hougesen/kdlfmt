@@ -69,7 +69,19 @@ npx kdlfmt format .
 
 ### Precompiled Binaries
 
-If you do not have/want Rust or Homebrew installed on your device, you can find precompiled binaries on the [release](https://github.com/hougesen/kdlfmt/releases) page.
+If you do not have/want Rust or Homebrew installed on your device, you can find precompiled binaries on the [release](https://github.com/hougesen/kdlfmt/releases) page or run one of the installers below.
+
+#### Linux & MacOS
+
+```shell
+curl --proto '=https' --tlsv1.2 -LsSf https://github.com/hougesen/kdlfmt/releases/latest/download/kdlfmt-installer.sh | sh
+```
+
+#### Windows
+
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://github.com/hougesen/kdlfmt/releases/latest/download/kdlfmt-installer.ps1 | iex"
+```
 
 ## Usage
 
