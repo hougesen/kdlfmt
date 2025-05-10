@@ -85,4 +85,58 @@ mod test_cli {
             }
         }
     }
+
+    mod init {
+        use predicates::prelude::PredicateBooleanExt;
+        use tempfile::tempdir;
+
+        use super::kdlfmt_command;
+
+        #[test]
+        fn help_arg_outputs_message() {
+            let dir = tempdir().unwrap();
+
+            kdlfmt_command(dir.path())
+                .arg("init")
+                .arg("--help")
+                .assert()
+                .success()
+                .stdout(predicates::str::is_empty().not());
+        }
+
+        #[test]
+        fn creates_a_config_file() {
+            let dir = tempdir().unwrap();
+
+            kdlfmt_command(dir.path()).arg("init").assert().success();
+
+            let config_file_created = dir.path().join("kdlfmt.kdl").try_exists().unwrap();
+
+            assert!(config_file_created);
+        }
+
+        #[test]
+        fn fails_if_config_exists() {
+            let dir = tempdir().unwrap();
+
+            kdlfmt_command(dir.path()).arg("init").assert().success();
+
+            kdlfmt_command(dir.path()).arg("init").assert().failure();
+        }
+
+        #[test]
+        fn force_config_arg() {
+            let dir = tempdir().unwrap();
+
+            kdlfmt_command(dir.path()).arg("init").assert().success();
+
+            kdlfmt_command(dir.path()).arg("init").assert().failure();
+
+            kdlfmt_command(dir.path())
+                .arg("init")
+                .arg("--force")
+                .assert()
+                .success();
+        }
+    }
 }

@@ -39,7 +39,7 @@ impl KdlFmtConfig {
         if let Ok(config_str) = std::fs::read_to_string(Self::filename()) {
             // TODO: custom parse error
             let doc = Self::parse_config(&config_str)
-                .map_err(|error| KdlFmtError::ParseError(None, error))?;
+                .map_err(|error| KdlFmtError::ParseKdl(None, error))?;
 
             if doc
                 .get_arg(Self::use_tabs_key())
