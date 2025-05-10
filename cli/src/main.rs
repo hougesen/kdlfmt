@@ -1,6 +1,7 @@
 use clap::Parser;
-
-use self::{cli::Cli, commands::execute_command, terminal::print_error};
+use cli::Cli;
+use commands::execute_command;
+use terminal::{logging::setup_logger, print_error};
 
 mod cli;
 mod commands;
@@ -12,6 +13,8 @@ mod terminal;
 
 fn main() {
     let cli = Cli::parse();
+
+    setup_logger(cli.log_level.unwrap_or(cli::LogLevel::Debug));
 
     if let Err(error) = execute_command(cli.command) {
         print_error(&error);

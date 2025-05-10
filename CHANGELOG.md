@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.0.16...HEAD)
 
+- feat(init): add --force argument [`#123`](https://github.com/hougesen/kdlfmt/pull/123)
 - feat: support nushell completions [`#122`](https://github.com/hougesen/kdlfmt/pull/122)
 - test(cli): validate completions command [`#121`](https://github.com/hougesen/kdlfmt/pull/121)
 - test: setup code coverage tracking [`#120`](https://github.com/hougesen/kdlfmt/pull/120)

@@ -15,6 +15,9 @@ const HELP_TEMPLATE: &str = "\
 pub struct Cli {
     #[command(subcommand)]
     pub command: Commands,
+
+    #[arg(long, value_enum, global = true)]
+    pub log_level: Option<LogLevel>,
 }
 
 #[derive(Debug, Subcommand)]
@@ -49,9 +52,6 @@ pub struct FormatCommandArguments {
     /// Read from stdin and print to stdout.
     #[arg(long)]
     pub stdin: bool,
-
-    #[arg(long, value_enum)]
-    pub log_level: Option<LogLevel>,
 }
 
 #[derive(clap::ValueEnum, Clone, Copy, PartialEq, Eq, Debug)]
@@ -139,9 +139,6 @@ pub struct InitCommandArguments {
     /// By default all versions are tried
     #[arg(long, value_enum)]
     pub kdl_version: Option<KdlVersion>,
-
-    #[arg(long, value_enum)]
-    pub log_level: Option<LogLevel>,
 }
 
 #[derive(clap::ValueEnum, Clone, Copy, PartialEq, Eq, Debug, Default)]
