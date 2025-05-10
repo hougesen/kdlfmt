@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.0.16...HEAD)
 
+- test(cli): validate completions command [`#121`](https://github.com/hougesen/kdlfmt/pull/121)
 - test: setup code coverage tracking [`#120`](https://github.com/hougesen/kdlfmt/pull/120)
 - build(deps): bump clap_complete from 4.5.48 to 4.5.50 [`#119`](https://github.com/hougesen/kdlfmt/pull/119)
 - docs: add link to repology [`#118`](https://github.com/hougesen/kdlfmt/pull/118)

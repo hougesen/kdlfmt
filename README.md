@@ -209,7 +209,7 @@ Generate shell completions
 Usage: kdlfmt completions <SHELL>
 
 Arguments:
-  <SHELL>  [possible values: bash, elvish, fish, powershell, zsh]
+  <SHELL>  [possible values: bash, elvish, fish, nushell, powershell, zsh]
 
 Options:
   -h, --help     Print help
@@ -257,4 +257,12 @@ Add the following to `~/.elvish/rc.elv`.
 
 ```elvish
 eval (kdlfmt completions elvish)
+```
+
+### Nushell
+
+Generate completions for [nushell](https://github.com/nushell/nushell).
+
+```nushell
+kdlfmt completions nushell
 ```
