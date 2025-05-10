@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.0.16...HEAD)
 
+- docs: add link to repology [`#118`](https://github.com/hougesen/kdlfmt/pull/118)
 - docs: add bash script installer instructions [`#117`](https://github.com/hougesen/kdlfmt/pull/117)
 - docs: add npm/npx installation instructions [`#116`](https://github.com/hougesen/kdlfmt/pull/116)
 - build: custom gh runner for x86_64-unknown-linux-musl & aarch64-unknown-linux-gnu [`#115`](https://github.com/hougesen/kdlfmt/pull/115)

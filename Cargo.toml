@@ -11,7 +11,8 @@ authors = ["Mads Hougesen <mads@mhouge.dk>"]
 license = "MIT"
 repository = "https://github.com/hougesen/kdlfmt"
 keywords = ["kdl", "formatter", "pretty-printing", "code-formatter"]
-homepage = "https://github.com/hougesen/kdlfmt"
+homepage = "https://github.com/hougesen/kdlfmt?tab=readme-ov-file"
+documentation = "https://github.com/hougesen/kdlfmt#readme"
 readme = "README.md"
 categories = ["development-tools", "command-line-utilities"]
 

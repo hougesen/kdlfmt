@@ -83,6 +83,12 @@ curl --proto '=https' --tlsv1.2 -LsSf https://github.com/hougesen/kdlfmt/release
 powershell -ExecutionPolicy ByPass -c "irm https://github.com/hougesen/kdlfmt/releases/latest/download/kdlfmt-installer.ps1 | iex"
 ```
 
+## Other package managers
+
+A non-complete list of other package managers with support for installing kdlfmt can be found at [Repology](https://repology.org/project/kdlfmt).
+
+[![Packaging status](https://repology.org/badge/vertical-allrepos/kdlfmt.svg?columns=3)](https://repology.org/project/kdlfmt/versions)
+
 ## Usage
 
 Once installed the formatted can be invoked by running `kdlfmt format`.
