@@ -24,7 +24,7 @@ pub fn execute_command(command: Commands) -> Result<(), KdlFmtError> {
             format::run(&args, &KdlFmtConfig::load()?)
         }
         Commands::Completions(args) => {
-            completions::run(&args);
+            completions::run(&args, &mut std::io::stdout());
 
             Ok(())
         }

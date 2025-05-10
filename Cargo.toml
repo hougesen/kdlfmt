@@ -4,7 +4,7 @@ exclude = []
 resolver = "3"
 
 [workspace.package]
-version = "0.0.16"
+version = "0.0.16-next"
 edition = "2024"
 description = "A code formatter for kdl documents."
 authors = ["Mads Hougesen <mads@mhouge.dk>"]
@@ -20,6 +20,7 @@ categories = ["development-tools", "command-line-utilities"]
 assert_cmd = "2.0.17"
 clap = { version = "4.5.37", features = ["derive"] }
 clap_complete = "4.5.50"
+clap_complete_nushell = "4.5.5"
 console = "0.15.11"
 ec4rs = "1.2.0"
 env_logger = "0.11.8"

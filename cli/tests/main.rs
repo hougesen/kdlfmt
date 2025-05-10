@@ -73,7 +73,7 @@ mod test_cli {
         fn outputs_shell_completions() {
             let dir = tempdir().unwrap();
 
-            let shells = ["bash", "elvish", "fish", "powershell", "zsh"];
+            let shells = ["bash", "elvish", "fish", "nushell", "powershell", "zsh"];
 
             for shell in shells {
                 kdlfmt_command(dir.path())
