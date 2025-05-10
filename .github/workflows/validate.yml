@@ -29,10 +29,10 @@ jobs:
       - run: cargo clippy
       - run: cargo test
       - name: Generate code coverage
-        run: cargo llvm-cov --all-features --all-targets --locked --lcov --output-path lcov.info
+        run: cargo llvm-cov --all-features --all-targets --workspace --codecov --output-path codecov.json
       - name: Upload code coverage
         uses: codecov/codecov-action@v5
         with:
-          files: lcov.info
+          files: codecov.json
           slug: hougesen/kdlfmt
           token: ${{ secrets.CODECOV_TOKEN }}
