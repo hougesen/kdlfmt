@@ -1,8 +1,3 @@
-alias b := build
-alias l := lint
-alias t := test
-alias tc := test-coverage
-
 build:
     cargo check
     cargo build

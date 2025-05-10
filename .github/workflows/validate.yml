@@ -16,15 +16,23 @@ jobs:
           - windows-latest
           - macos-latest
           - ubuntu-latest
-          # TODO: remove once macos-latest is upgraded to an arm machine
-          - macos-14
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - uses: Swatinem/rust-cache@v2
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy
+      - name: Install cargo-llvm-cov
+        uses: taiki-e/install-action@cargo-llvm-cov
       - run: cargo fetch
       - run: cargo fmt -- --check --color always
       - run: cargo clippy
       - run: cargo test
+      - name: Generate code coverage
+        run: cargo llvm-cov --all-features --all-targets --locked --lcov --output-path lcov.info
+      - name: Upload code coverage
+        uses: codecov/codecov-action@v5
+        with:
+          files: lcov.info
+          slug: hougesen/kdlfmt
+          token: ${{ secrets.CODECOV_TOKEN }}
