@@ -55,10 +55,7 @@ impl KdlFmtConfig {
                 .get_arg(Self::indent_size_key())
                 .and_then(kdl::KdlValue::as_integer)
             {
-                config.indent = Self::get_indent(
-                    indent_size.max(0).min(usize::MAX as i128) as usize,
-                    config.use_tabs,
-                );
+                config.indent = Self::get_indent(indent_size.max(0) as usize, config.use_tabs);
                 config.from_kdlfmt_file = true;
             }
         }

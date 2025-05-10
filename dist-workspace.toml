@@ -27,5 +27,13 @@ npm-package = "kdlfmt"
 global = "ubuntu-latest"
 
 # https://github.com/axodotdev/cargo-dist/issues/1760
+[dist.github-custom-runners.aarch64-unknown-linux-gnu]
+runner = "ubuntu-latest"
+
+# https://github.com/axodotdev/cargo-dist/issues/1760
 [dist.github-custom-runners.x86_64-unknown-linux-gnu]
+runner = "ubuntu-latest"
+
+# https://github.com/axodotdev/cargo-dist/issues/1760
+[dist.github-custom-runners.x86_64-unknown-linux-musl]
 runner = "ubuntu-latest"
