@@ -1,7 +1,13 @@
-use crate::{cli::InitCommandArguments, config::KdlFmtConfig, kdl::format_kdl};
+use crate::{cli::InitCommandArguments, config::KdlFmtConfig, error::KdlFmtError, kdl::format_kdl};
 
 #[inline]
-pub fn run(args: &InitCommandArguments) -> std::io::Result<()> {
+pub fn run(args: &InitCommandArguments) -> Result<(), KdlFmtError> {
+    let config_path = std::path::Path::new(KdlFmtConfig::filename());
+
+    if !args.force && config_path.try_exists()? {
+        return Err(KdlFmtError::ConfigAlreadyExist);
+    }
+
     let config = KdlFmtConfig::default();
 
     let mut doc = kdl::KdlDocument::new();
@@ -20,5 +26,5 @@ pub fn run(args: &InitCommandArguments) -> std::io::Result<()> {
 
     let doc = format_kdl(doc, &format_config, args.kdl_version.unwrap_or_default());
 
-    std::fs::write(KdlFmtConfig::filename(), &doc)
+    std::fs::write(config_path, &doc).map_err(KdlFmtError::Io)
 }

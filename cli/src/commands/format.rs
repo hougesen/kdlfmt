@@ -11,10 +11,10 @@ use crate::{
 
 #[inline]
 fn run_from_stdin(args: &FormatCommandArguments, config: &KdlFmtConfig) -> Result<(), KdlFmtError> {
-    let input = read_stdin().map_err(KdlFmtError::ReadStdinError)?;
+    let input = read_stdin().map_err(KdlFmtError::ReadStdin)?;
 
-    let (parsed, version) = parse_kdl(&input, args.kdl_version)
-        .map_err(|error| KdlFmtError::ParseError(None, error))?;
+    let (parsed, version) =
+        parse_kdl(&input, args.kdl_version).map_err(|error| KdlFmtError::ParseKdl(None, error))?;
 
     let actual_config =
         KdlFmtConfig::get_editorconfig_or_default(config, &std::path::PathBuf::from("dummy.kdl"));
@@ -35,7 +35,7 @@ fn run_from_args(args: &FormatCommandArguments, config: &KdlFmtConfig) -> Result
     for path in &args.input {
         paths.push(
             std::path::PathBuf::from_str(path)
-                .map_err(|_| KdlFmtError::InvalidPathError(path.clone()))?,
+                .map_err(|_| KdlFmtError::InvalidPath(path.clone()))?,
         );
     }
 
@@ -62,7 +62,7 @@ fn run_from_args(args: &FormatCommandArguments, config: &KdlFmtConfig) -> Result
             let input = std::fs::read_to_string(file_path)?;
 
             let (parsed, version) = parse_kdl(&input, args.kdl_version)
-                .map_err(|error| KdlFmtError::ParseError(Some(file_path.to_path_buf()), error))?;
+                .map_err(|error| KdlFmtError::ParseKdl(Some(file_path.to_path_buf()), error))?;
 
             let actual_config = KdlFmtConfig::get_editorconfig_or_default(
                 config,
