@@ -51,6 +51,22 @@ brew install kdlfmt
 brew install hougesen/tap/kdlfmt
 ```
 
+### Using npm/npx
+
+You can install `kdlfmt` using [npm](https://www.npmjs.com/package/kdlfmt):
+
+```shell
+npm install -g kdlfmt
+
+kdlfmt format .
+```
+
+Or run it directly using npx:
+
+```shell
+npx kdlfmt format .
+```
+
 ### Precompiled Binaries
 
 If you do not have/want Rust or Homebrew installed on your device, you can find precompiled binaries on the [release](https://github.com/hougesen/kdlfmt/releases) page.
