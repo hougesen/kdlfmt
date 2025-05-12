@@ -246,6 +246,90 @@ mod test_format_command {
         }
 
         #[test]
+        fn formats_broken_code_with_config() {
+            let dir = tempfile::tempdir().unwrap();
+
+            kdlfmt_command(dir.path()).arg("init").assert().success();
+
+            {
+                let file = setup_test_input(dir.path(), BROKEN_V1_CODE);
+
+                kdlfmt_command(dir.path())
+                    .arg("format")
+                    .arg(file.path())
+                    .assert()
+                    .success()
+                    .stderr(predicates::str::contains("(unchanged)").not());
+
+                let output = std::fs::read_to_string(file.path()).unwrap();
+
+                assert_eq!(output, FORMATTED_V1_CODE);
+            };
+
+            {
+                let file = setup_test_input(dir.path(), BROKEN_V2_CODE);
+
+                kdlfmt_command(dir.path())
+                    .arg("format")
+                    .arg(file.path())
+                    .assert()
+                    .success()
+                    .stderr(predicates::str::contains("(unchanged)").not());
+
+                let output = std::fs::read_to_string(file.path()).unwrap();
+
+                assert_eq!(output, FORMATTED_V2_CODE);
+            };
+        }
+
+        #[test]
+        fn formats_broken_code_with_config_path() {
+            let dir = tempfile::tempdir().unwrap();
+
+            kdlfmt_command(dir.path()).arg("init").assert().success();
+
+            let config_path = dir.path().join("new-config.kdl");
+
+            std::fs::copy(dir.path().join("kdlfmt.kdl"), &config_path).unwrap();
+
+            let _ = std::fs::remove_file(dir.path().join("kdlfmt.kdl"));
+
+            {
+                let file = setup_test_input(dir.path(), BROKEN_V1_CODE);
+
+                kdlfmt_command(dir.path())
+                    .arg("format")
+                    .arg("--config")
+                    .arg(&config_path)
+                    .arg(file.path())
+                    .assert()
+                    .success()
+                    .stderr(predicates::str::contains("(unchanged)").not());
+
+                let output = std::fs::read_to_string(file.path()).unwrap();
+
+                assert_eq!(output, FORMATTED_V1_CODE);
+            };
+
+            {
+                let file = setup_test_input(dir.path(), BROKEN_V2_CODE);
+
+                kdlfmt_command(dir.path())
+                    .arg("format")
+                    .arg("--config")
+                    .arg(&config_path)
+                    .arg(file.path())
+                    .assert()
+                    .success()
+                    .stderr(predicates::str::contains("(unchanged)").not());
+
+                let output = std::fs::read_to_string(file.path()).unwrap();
+
+                assert_eq!(output, FORMATTED_V2_CODE);
+            };
+        }
+
+        #[test]
         fn prints_if_file_wasnt_changed() {
             let dir = tempfile::tempdir().unwrap();
 

@@ -29,14 +29,20 @@ impl KdlFmtConfig {
 
     #[inline]
     fn parse_config(config: &str) -> miette::Result<KdlDocument> {
-        Ok(parse_kdl(config, None)?.0)
+        parse_kdl(config, None).map(|(doc, _version)| doc)
     }
 
     #[inline]
-    pub fn load() -> Result<Self, KdlFmtError> {
+    pub fn load(path: Option<&std::path::PathBuf>) -> Result<Self, KdlFmtError> {
         let mut config = Self::default();
 
-        if let Ok(config_str) = std::fs::read_to_string(Self::filename()) {
+        let config_result = if let Some(path) = path {
+            std::fs::read_to_string(path)
+        } else {
+            std::fs::read_to_string(Self::filename())
+        };
+
+        if let Ok(config_str) = config_result {
             // TODO: custom parse error
             let doc = Self::parse_config(&config_str)
                 .map_err(|error| KdlFmtError::ParseKdl(None, error))?;
