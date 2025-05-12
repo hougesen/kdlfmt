@@ -4,7 +4,7 @@ exclude = []
 resolver = "3"
 
 [workspace.package]
-version = "0.0.16-next"
+version = "0.0.17"
 edition = "2024"
 description = "A code formatter for kdl documents."
 authors = ["Mads Hougesen <mads@mhouge.dk>"]
