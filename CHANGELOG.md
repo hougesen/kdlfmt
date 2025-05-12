@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.0.16...HEAD)
 
+- feat: add --config path arg to format command [`#128`](https://github.com/hougesen/kdlfmt/pull/128)
 - test(cli): validate check and format commands [`#127`](https://github.com/hougesen/kdlfmt/pull/127)
 - build(deps): bump clap from 4.5.37 to 4.5.38 [`#125`](https://github.com/hougesen/kdlfmt/pull/125)
 - build(deps): bump tempfile from 3.19.1 to 3.20.0 [`#126`](https://github.com/hougesen/kdlfmt/pull/126)
