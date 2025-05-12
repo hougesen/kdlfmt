@@ -203,6 +203,8 @@ mod test_format_command {
     }
 
     mod auto {
+        use predicates::prelude::PredicateBooleanExt;
+
         use crate::{
             BROKEN_V1_CODE, BROKEN_V2_CODE, FORMATTED_V1_CODE, FORMATTED_V2_CODE, INVALID_V1_CODE,
             INVALID_V2_CODE, kdlfmt_command, setup_test_input,
@@ -219,7 +221,8 @@ mod test_format_command {
                     .arg("format")
                     .arg(file.path())
                     .assert()
-                    .success();
+                    .success()
+                    .stderr(predicates::str::contains("(unchanged)").not());
 
                 let output = std::fs::read_to_string(file.path()).unwrap();
 
@@ -233,7 +236,43 @@ mod test_format_command {
                     .arg("format")
                     .arg(file.path())
                     .assert()
-                    .success();
+                    .success()
+                    .stderr(predicates::str::contains("(unchanged)").not());
+
+                let output = std::fs::read_to_string(file.path()).unwrap();
+
+                assert_eq!(output, FORMATTED_V2_CODE);
+            };
+        }
+
+        #[test]
+        fn prints_if_file_wasnt_changed() {
+            let dir = tempfile::tempdir().unwrap();
+
+            {
+                let file = setup_test_input(dir.path(), FORMATTED_V1_CODE);
+
+                kdlfmt_command(dir.path())
+                    .arg("format")
+                    .arg(file.path())
+                    .assert()
+                    .success()
+                    .stderr(predicates::str::contains("(unchanged)"));
+
+                let output = std::fs::read_to_string(file.path()).unwrap();
+
+                assert_eq!(output, FORMATTED_V1_CODE);
+            };
+
+            {
+                let file = setup_test_input(dir.path(), FORMATTED_V2_CODE);
+
+                kdlfmt_command(dir.path())
+                    .arg("format")
+                    .arg(file.path())
+                    .assert()
+                    .success()
+                    .stderr(predicates::str::contains("(unchanged)"));
 
                 let output = std::fs::read_to_string(file.path()).unwrap();
 
@@ -383,6 +422,8 @@ mod test_format_command {
     }
 
     mod v1 {
+        use predicates::prelude::PredicateBooleanExt;
+
         use crate::{
             BROKEN_V1_CODE, FORMATTED_V1_CODE, INVALID_V1_CODE, kdlfmt_command, setup_test_input,
         };
@@ -399,7 +440,8 @@ mod test_format_command {
                 .arg("v1")
                 .arg(file.path())
                 .assert()
-                .success();
+                .success()
+                .stderr(predicates::str::contains("(unchanged)").not());
 
             let output = std::fs::read_to_string(file.path()).unwrap();
 
@@ -499,6 +541,8 @@ mod test_format_command {
     }
 
     mod v2 {
+        use predicates::prelude::PredicateBooleanExt;
+
         use crate::{
             BROKEN_V2_CODE, FORMATTED_V2_CODE, INVALID_V2_CODE, kdlfmt_command, setup_test_input,
         };
@@ -515,7 +559,8 @@ mod test_format_command {
                 .arg("v2")
                 .arg(file.path())
                 .assert()
-                .success();
+                .success()
+                .stderr(predicates::str::contains("(unchanged)").not());
 
             let output = std::fs::read_to_string(file.path()).unwrap();
 
