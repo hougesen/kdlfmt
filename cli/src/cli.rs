@@ -52,6 +52,10 @@ pub struct FormatCommandArguments {
     /// Read from stdin and print to stdout.
     #[arg(long)]
     pub stdin: bool,
+
+    /// Path to config file.
+    #[arg(long)]
+    pub config: Option<std::path::PathBuf>,
 }
 
 #[derive(clap::ValueEnum, Clone, Copy, PartialEq, Eq, Debug)]
