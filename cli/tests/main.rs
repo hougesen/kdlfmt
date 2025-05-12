@@ -635,8 +635,8 @@ mod test_check_command {
 
     mod auto {
         use crate::{
-            BROKEN_V1_CODE, BROKEN_V2_CODE, FORMATTED_V1_CODE, FORMATTED_V2_CODE, kdlfmt_command,
-            setup_test_input,
+            BROKEN_V1_CODE, BROKEN_V2_CODE, FORMATTED_V1_CODE, FORMATTED_V2_CODE, INVALID_V1_CODE,
+            INVALID_V2_CODE, kdlfmt_command, setup_test_input,
         };
 
         #[test]
@@ -770,10 +770,68 @@ mod test_check_command {
                     .success();
             };
         }
+
+        #[test]
+        fn it_should_fail_if_kdl_is_invalid() {
+            let dir = tempfile::tempdir().unwrap();
+
+            {
+                let file = setup_test_input(dir.path(), INVALID_V1_CODE);
+
+                kdlfmt_command(dir.path())
+                    .arg("check")
+                    .arg(file.path())
+                    .assert()
+                    .failure()
+                    .stderr(predicates::str::contains("Error parsing file "));
+
+                let output = std::fs::read_to_string(file.path()).unwrap();
+
+                assert_eq!(output, INVALID_V1_CODE);
+            };
+
+            {
+                let file = setup_test_input(dir.path(), INVALID_V2_CODE);
+
+                kdlfmt_command(dir.path())
+                    .arg("check")
+                    .arg(file.path())
+                    .assert()
+                    .failure()
+                    .stderr(predicates::str::contains("Error parsing file "));
+
+                let output = std::fs::read_to_string(file.path()).unwrap();
+
+                assert_eq!(output, INVALID_V2_CODE);
+            };
+        }
+
+        #[test]
+        fn it_should_fail_if_kdl_is_invalid_stdin() {
+            let dir = tempfile::tempdir().unwrap();
+
+            kdlfmt_command(dir.path())
+                .arg("check")
+                .arg("--stdin")
+                .write_stdin(INVALID_V1_CODE)
+                .assert()
+                .failure()
+                .stderr(predicates::str::contains("Error parsing content"));
+
+            kdlfmt_command(dir.path())
+                .arg("check")
+                .arg("--stdin")
+                .write_stdin(INVALID_V2_CODE)
+                .assert()
+                .failure()
+                .stderr(predicates::str::contains("Error parsing content"));
+        }
     }
 
     mod v1 {
-        use crate::{BROKEN_V1_CODE, FORMATTED_V1_CODE, kdlfmt_command, setup_test_input};
+        use crate::{
+            BROKEN_V1_CODE, FORMATTED_V1_CODE, INVALID_V1_CODE, kdlfmt_command, setup_test_input,
+        };
 
         #[test]
         fn success_with_formatted_input() {
@@ -861,10 +919,47 @@ mod test_check_command {
                 .assert()
                 .success();
         }
+
+        #[test]
+        fn it_should_fail_if_kdl_is_invalid() {
+            let dir = tempfile::tempdir().unwrap();
+
+            let file = setup_test_input(dir.path(), INVALID_V1_CODE);
+
+            kdlfmt_command(dir.path())
+                .arg("check")
+                .arg("--kdl-version")
+                .arg("v1")
+                .arg(file.path())
+                .assert()
+                .failure()
+                .stderr(predicates::str::contains("Error parsing file "));
+
+            let output = std::fs::read_to_string(file.path()).unwrap();
+
+            assert_eq!(output, INVALID_V1_CODE);
+        }
+
+        #[test]
+        fn it_should_fail_if_kdl_is_invalid_stdin() {
+            let dir = tempfile::tempdir().unwrap();
+
+            kdlfmt_command(dir.path())
+                .arg("check")
+                .arg("--kdl-version")
+                .arg("v1")
+                .arg("--stdin")
+                .write_stdin(INVALID_V1_CODE)
+                .assert()
+                .failure()
+                .stderr(predicates::str::contains("Error parsing content"));
+        }
     }
 
     mod v2 {
-        use crate::{BROKEN_V2_CODE, FORMATTED_V2_CODE, kdlfmt_command, setup_test_input};
+        use crate::{
+            BROKEN_V2_CODE, FORMATTED_V2_CODE, INVALID_V2_CODE, kdlfmt_command, setup_test_input,
+        };
 
         #[test]
         fn success_with_formatted_input() {
@@ -951,6 +1046,41 @@ mod test_check_command {
                 .arg(file2.path())
                 .assert()
                 .success();
+        }
+
+        #[test]
+        fn it_should_fail_if_kdl_is_invalid() {
+            let dir = tempfile::tempdir().unwrap();
+
+            let file = setup_test_input(dir.path(), INVALID_V2_CODE);
+
+            kdlfmt_command(dir.path())
+                .arg("check")
+                .arg("--kdl-version")
+                .arg("v2")
+                .arg(file.path())
+                .assert()
+                .failure()
+                .stderr(predicates::str::contains("Error parsing file "));
+
+            let output = std::fs::read_to_string(file.path()).unwrap();
+
+            assert_eq!(output, INVALID_V2_CODE);
+        }
+
+        #[test]
+        fn it_should_fail_if_kdl_is_invalid_stdin() {
+            let dir = tempfile::tempdir().unwrap();
+
+            kdlfmt_command(dir.path())
+                .arg("check")
+                .arg("--kdl-version")
+                .arg("v2")
+                .arg("--stdin")
+                .write_stdin(INVALID_V2_CODE)
+                .assert()
+                .failure()
+                .stderr(predicates::str::contains("Error parsing content"));
         }
     }
 }
