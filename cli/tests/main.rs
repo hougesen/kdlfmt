@@ -276,7 +276,7 @@ mod test_cli {
         use predicates::prelude::PredicateBooleanExt;
         use tempfile::tempdir;
 
-        use super::kdlfmt_command;
+        use super::{FORMATTED_V1_CODE, FORMATTED_V2_CODE, kdlfmt_command, setup_test_input};
 
         #[test]
         fn help_arg_outputs_message() {
@@ -288,6 +288,61 @@ mod test_cli {
                 .assert()
                 .success()
                 .stdout(predicates::str::is_empty().not());
+        }
+
+        #[test]
+        fn success_with_formatted_input() {
+            let dir = tempdir().unwrap();
+
+            {
+                let file = setup_test_input(dir.path(), FORMATTED_V1_CODE);
+
+                kdlfmt_command(dir.path())
+                    .arg("check")
+                    .arg(file.path())
+                    .assert()
+                    .success();
+            };
+
+            {
+                let file = setup_test_input(dir.path(), FORMATTED_V2_CODE);
+
+                kdlfmt_command(dir.path())
+                    .arg("check")
+                    .arg(file.path())
+                    .assert()
+                    .success();
+            };
+        }
+
+        #[test]
+        fn success_with_formatted_input_kdl_version_v1() {
+            let dir = tempdir().unwrap();
+
+            let file = setup_test_input(dir.path(), FORMATTED_V1_CODE);
+
+            kdlfmt_command(dir.path())
+                .arg("check")
+                .arg("--kdl-version")
+                .arg("v1")
+                .arg(file.path())
+                .assert()
+                .success();
+        }
+
+        #[test]
+        fn success_with_formatted_input_kdl_version_v2() {
+            let dir = tempdir().unwrap();
+
+            let file = setup_test_input(dir.path(), FORMATTED_V2_CODE);
+
+            kdlfmt_command(dir.path())
+                .arg("check")
+                .arg("--kdl-version")
+                .arg("v2")
+                .arg(file.path())
+                .assert()
+                .success();
         }
     }
 }
