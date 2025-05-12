@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.0.16...HEAD)
 
+- build(deps): bump clap from 4.5.37 to 4.5.38 [`#125`](https://github.com/hougesen/kdlfmt/pull/125)
+- build(deps): bump tempfile from 3.19.1 to 3.20.0 [`#126`](https://github.com/hougesen/kdlfmt/pull/126)
+- refactor(cli): make log level to global arg [`#124`](https://github.com/hougesen/kdlfmt/pull/124)
 - feat(init): add --force argument [`#123`](https://github.com/hougesen/kdlfmt/pull/123)
 - feat: support nushell completions [`#122`](https://github.com/hougesen/kdlfmt/pull/122)
 - test(cli): validate completions command [`#121`](https://github.com/hougesen/kdlfmt/pull/121)

@@ -1,7 +1,6 @@
 #[derive(Debug)]
 pub enum KdlFmtError {
     Io(std::io::Error),
-    InvalidPath(String),
     ParseKdl(Option<std::path::PathBuf>, miette::Error),
     ReadStdin(std::io::Error),
     CheckModeChanges,
@@ -21,7 +20,6 @@ impl std::fmt::Display for KdlFmtError {
                     write!(f, "Error parsing content - {error:?}")
                 }
             }
-            Self::InvalidPath(path) => write!(f, "'{path}' is not a valid path"),
             Self::CheckModeChanges => write!(f, "Found changes while running in check mode"),
             Self::ConfigAlreadyExist => write!(f, "A config already exists in this directory"),
         }
@@ -29,10 +27,3 @@ impl std::fmt::Display for KdlFmtError {
 }
 
 impl std::error::Error for KdlFmtError {}
-
-impl From<std::io::Error> for KdlFmtError {
-    #[inline]
-    fn from(value: std::io::Error) -> Self {
-        Self::Io(value)
-    }
-}
