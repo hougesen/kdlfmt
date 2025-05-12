@@ -13,14 +13,14 @@ const FORMATTED_V1_CODE: &str = r#"world {
 "#;
 
 const BROKEN_V2_CODE: &str = r#"world          {
-      child  "1"
- child                "2"
+      child  "3"
+ child                "4"
    }
 "#;
 
 const FORMATTED_V2_CODE: &str = r#"world {
-    child "1"
-    child "2"
+    child "3"
+    child "4"
 }
 "#;
 
@@ -699,6 +699,9 @@ mod test_check_command {
                     .arg(file.path())
                     .assert()
                     .failure();
+
+                let content_after = std::fs::read_to_string(file.path()).unwrap();
+                assert_eq!(content_after, BROKEN_V1_CODE);
             };
 
             {
@@ -709,6 +712,9 @@ mod test_check_command {
                     .arg(file.path())
                     .assert()
                     .failure();
+
+                let content_after = std::fs::read_to_string(file.path()).unwrap();
+                assert_eq!(content_after, BROKEN_V2_CODE);
             };
         }
 
@@ -875,6 +881,9 @@ mod test_check_command {
                 .arg(file.path())
                 .assert()
                 .failure();
+
+            let content_after = std::fs::read_to_string(file.path()).unwrap();
+            assert_eq!(content_after, BROKEN_V1_CODE);
         }
 
         #[test]
@@ -1003,6 +1012,9 @@ mod test_check_command {
                 .arg(file.path())
                 .assert()
                 .failure();
+
+            let content_after = std::fs::read_to_string(file.path()).unwrap();
+            assert_eq!(content_after, BROKEN_V2_CODE);
         }
 
         #[test]
