@@ -7,11 +7,11 @@ kdlfmt is a thin cli wrapper built on-top of the official `kdl` parser for Rust 
 <!-- START_SECTION:base-command-help -->
 
 ```
-kdlfmt 0.0.16
+kdlfmt 0.0.16-next
 A code formatter for kdl documents.
 Mads Hougesen <mads@mhouge.dk>
 
-Usage: kdlfmt <COMMAND>
+Usage: kdlfmt [OPTIONS] <COMMAND>
 
 Commands:
   format       Format kdl files
@@ -21,9 +21,9 @@ Commands:
   help         Print this message or the help of the given subcommand(s)
 
 Options:
-  -h, --help     Print help
-  -V, --version  Print version
-
+      --log-level <LOG_LEVEL>  [possible values: trace, debug, info, warn, error, off]
+  -h, --help                   Print help
+  -V, --version                Print version
 ```
 
 <!-- END_SECTION:base-command-help -->
@@ -127,6 +127,9 @@ Options:
       --stdin
           Read from stdin and print to stdout
 
+      --config <CONFIG>
+          Path to config file
+
       --log-level <LOG_LEVEL>
           [possible values: trace, debug, info, warn, error, off]
 
@@ -135,7 +138,6 @@ Options:
 
   -V, --version
           Print version
-
 ```
 
 <!-- END_SECTION:format-command-help -->
@@ -178,6 +180,9 @@ Options:
       --stdin
           Read from stdin and print to stdout
 
+      --config <CONFIG>
+          Path to config file
+
       --log-level <LOG_LEVEL>
           [possible values: trace, debug, info, warn, error, off]
 
@@ -186,7 +191,6 @@ Options:
 
   -V, --version
           Print version
-
 ```
 
 <!-- END_SECTION:check-command-help -->
@@ -206,15 +210,15 @@ Shell completion can be generated using the `kdl completions` command.
 ```
 Generate shell completions
 
-Usage: kdlfmt completions <SHELL>
+Usage: kdlfmt completions [OPTIONS] <SHELL>
 
 Arguments:
   <SHELL>  [possible values: bash, elvish, fish, nushell, powershell, zsh]
 
 Options:
-  -h, --help     Print help
-  -V, --version  Print version
-
+      --log-level <LOG_LEVEL>  [possible values: trace, debug, info, warn, error, off]
+  -h, --help                   Print help
+  -V, --version                Print version
 ```
 
 <!-- END_SECTION:completions-command-help -->

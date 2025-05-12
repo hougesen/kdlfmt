@@ -25,6 +25,7 @@ test-coverage:
     cargo llvm-cov --all-features --open
 
 format:
+    ruff format
     cargo fmt
     just --fmt --unstable .
     mdsf format .
@@ -33,18 +34,15 @@ format:
 changelog:
     npx auto-changelog -u --hide-credit -l 100 -b 100
 
+update-readme-command-help:
+    python3 readme-command-help.py
+
 precommit:
     just changelog
+    just update-readme-command-help
     just format
     just build
     just lint
     just test
     typos --exclude CHANGELOG.md .
     dist init --yes
-
-publish:
-    just build
-    just lint
-
-    cargo clean
-    cargo publish
