@@ -39,7 +39,7 @@ def generate_help_section(command: Optional[str], readme: str) -> str:
 
         elif line == start:
             lines.append(line)
-            lines.append(f"\n```\n{help_output}\n\n```\n")
+            lines.append(f"\n```\n{help_output}\n```\n")
             inside = True
             start_seen = True
         else:

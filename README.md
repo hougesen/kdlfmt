@@ -24,7 +24,6 @@ Options:
       --log-level <LOG_LEVEL>  [possible values: trace, debug, info, warn, error, off]
   -h, --help                   Print help
   -V, --version                Print version
-
 ```
 
 <!-- END_SECTION:base-command-help -->
@@ -139,7 +138,6 @@ Options:
 
   -V, --version
           Print version
-
 ```
 
 <!-- END_SECTION:format-command-help -->
@@ -193,7 +191,6 @@ Options:
 
   -V, --version
           Print version
-
 ```
 
 <!-- END_SECTION:check-command-help -->
@@ -222,7 +219,6 @@ Options:
       --log-level <LOG_LEVEL>  [possible values: trace, debug, info, warn, error, off]
   -h, --help                   Print help
   -V, --version                Print version
-
 ```
 
 <!-- END_SECTION:completions-command-help -->
