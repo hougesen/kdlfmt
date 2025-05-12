@@ -1,7 +1,33 @@
 #[cfg(test)]
 mod test_cli {
+    use std::io::Write;
+
     use predicates::prelude::PredicateBooleanExt;
     use tempfile::tempdir;
+
+    const BROKEN_V1_CODE: &str = r#"world          {
+      child  "1"
+ child                "2"
+   }
+"#;
+
+    const FORMATTED_V1_CODE: &str = r#"world {
+    child "1"
+    child "2"
+}
+"#;
+
+    const BROKEN_V2_CODE: &str = r#"world          {
+      child  "1"
+ child                "2"
+   }
+"#;
+
+    const FORMATTED_V2_CODE: &str = r#"world {
+    child "1"
+    child "2"
+}
+"#;
 
     fn kdlfmt_command(path: &std::path::Path) -> assert_cmd::Command {
         let mut cmd = assert_cmd::Command::cargo_bin("kdlfmt").unwrap();
@@ -9,6 +35,19 @@ mod test_cli {
         cmd.current_dir(path);
 
         cmd
+    }
+
+    fn setup_test_input(dir: &std::path::Path, code: &str) -> tempfile::NamedTempFile {
+        let mut b = tempfile::Builder::new();
+
+        b.rand_bytes(12).suffix(".kdl");
+
+        let mut f = b.tempfile_in(dir).unwrap();
+
+        f.write_all(code.as_bytes()).unwrap();
+        f.flush().unwrap();
+
+        f
     }
 
     #[test]
@@ -145,6 +184,9 @@ mod test_cli {
         use tempfile::tempdir;
 
         use super::kdlfmt_command;
+        use crate::test_cli::{
+            BROKEN_V1_CODE, BROKEN_V2_CODE, FORMATTED_V1_CODE, FORMATTED_V2_CODE, setup_test_input,
+        };
 
         #[test]
         fn help_arg_outputs_message() {
@@ -156,6 +198,77 @@ mod test_cli {
                 .assert()
                 .success()
                 .stdout(predicates::str::is_empty().not());
+        }
+
+        #[test]
+        fn formats_broken_code() {
+            let dir = tempdir().unwrap();
+
+            {
+                let file = setup_test_input(dir.path(), BROKEN_V1_CODE);
+
+                kdlfmt_command(dir.path())
+                    .arg("format")
+                    .arg(file.path())
+                    .assert()
+                    .success();
+
+                let output = std::fs::read_to_string(file.path()).unwrap();
+
+                assert_eq!(output, FORMATTED_V1_CODE);
+            };
+
+            {
+                let file = setup_test_input(dir.path(), BROKEN_V2_CODE);
+
+                kdlfmt_command(dir.path())
+                    .arg("format")
+                    .arg(file.path())
+                    .assert()
+                    .success();
+
+                let output = std::fs::read_to_string(file.path()).unwrap();
+
+                assert_eq!(output, FORMATTED_V2_CODE);
+            };
+        }
+
+        #[test]
+        fn formats_broken_code_kdl_version_v1() {
+            let dir = tempdir().unwrap();
+
+            let file = setup_test_input(dir.path(), BROKEN_V1_CODE);
+
+            kdlfmt_command(dir.path())
+                .arg("format")
+                .arg("--kdl-version")
+                .arg("v1")
+                .arg(file.path())
+                .assert()
+                .success();
+
+            let output = std::fs::read_to_string(file.path()).unwrap();
+
+            assert_eq!(output, FORMATTED_V1_CODE);
+        }
+
+        #[test]
+        fn formats_broken_code_kdl_version_v2() {
+            let dir = tempdir().unwrap();
+
+            let file = setup_test_input(dir.path(), BROKEN_V2_CODE);
+
+            kdlfmt_command(dir.path())
+                .arg("format")
+                .arg("--kdl-version")
+                .arg("v2")
+                .arg(file.path())
+                .assert()
+                .success();
+
+            let output = std::fs::read_to_string(file.path()).unwrap();
+
+            assert_eq!(output, FORMATTED_V2_CODE);
         }
     }
 
