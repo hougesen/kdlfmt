@@ -276,7 +276,10 @@ mod test_cli {
         use predicates::prelude::PredicateBooleanExt;
         use tempfile::tempdir;
 
-        use super::{FORMATTED_V1_CODE, FORMATTED_V2_CODE, kdlfmt_command, setup_test_input};
+        use super::{
+            BROKEN_V1_CODE, BROKEN_V2_CODE, FORMATTED_V1_CODE, FORMATTED_V2_CODE, kdlfmt_command,
+            setup_test_input,
+        };
 
         #[test]
         fn help_arg_outputs_message() {
@@ -343,6 +346,66 @@ mod test_cli {
                 .arg(file.path())
                 .assert()
                 .success();
+        }
+
+        ///////
+        ///
+        ///
+        ///
+
+        #[test]
+        fn fail_with_unformatted_input() {
+            let dir = tempdir().unwrap();
+
+            {
+                let file = setup_test_input(dir.path(), BROKEN_V1_CODE);
+
+                kdlfmt_command(dir.path())
+                    .arg("check")
+                    .arg(file.path())
+                    .assert()
+                    .failure();
+            };
+
+            {
+                let file = setup_test_input(dir.path(), BROKEN_V2_CODE);
+
+                kdlfmt_command(dir.path())
+                    .arg("check")
+                    .arg(file.path())
+                    .assert()
+                    .failure();
+            };
+        }
+
+        #[test]
+        fn fail_with_unformatted_kdl_version_v1() {
+            let dir = tempdir().unwrap();
+
+            let file = setup_test_input(dir.path(), BROKEN_V1_CODE);
+
+            kdlfmt_command(dir.path())
+                .arg("check")
+                .arg("--kdl-version")
+                .arg("v1")
+                .arg(file.path())
+                .assert()
+                .failure();
+        }
+
+        #[test]
+        fn fail_with_unformatted_kdl_version_v2() {
+            let dir = tempdir().unwrap();
+
+            let file = setup_test_input(dir.path(), BROKEN_V2_CODE);
+
+            kdlfmt_command(dir.path())
+                .arg("check")
+                .arg("--kdl-version")
+                .arg("v2")
+                .arg(file.path())
+                .assert()
+                .failure();
         }
     }
 }
