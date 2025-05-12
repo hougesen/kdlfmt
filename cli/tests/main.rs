@@ -139,4 +139,42 @@ mod test_cli {
                 .success();
         }
     }
+
+    mod format {
+        use predicates::prelude::PredicateBooleanExt;
+        use tempfile::tempdir;
+
+        use super::kdlfmt_command;
+
+        #[test]
+        fn help_arg_outputs_message() {
+            let dir = tempdir().unwrap();
+
+            kdlfmt_command(dir.path())
+                .arg("format")
+                .arg("--help")
+                .assert()
+                .success()
+                .stdout(predicates::str::is_empty().not());
+        }
+    }
+
+    mod check {
+        use predicates::prelude::PredicateBooleanExt;
+        use tempfile::tempdir;
+
+        use super::kdlfmt_command;
+
+        #[test]
+        fn help_arg_outputs_message() {
+            let dir = tempdir().unwrap();
+
+            kdlfmt_command(dir.path())
+                .arg("check")
+                .arg("--help")
+                .assert()
+                .success()
+                .stdout(predicates::str::is_empty().not());
+        }
+    }
 }
