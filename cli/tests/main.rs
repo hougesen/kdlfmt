@@ -262,6 +262,13 @@ mod test_format_command {
                     .stdout(predicates::str::contains(FORMATTED_V2_CODE));
             }
         }
+
+        #[test]
+        fn do_nothing_without_input() {
+            let dir = tempfile::tempdir().unwrap();
+
+            kdlfmt_command(dir.path()).arg("format").assert().success();
+        }
     }
 
     mod v1 {
@@ -300,6 +307,18 @@ mod test_format_command {
                 .success()
                 .stdout(predicates::str::contains(FORMATTED_V1_CODE));
         }
+
+        #[test]
+        fn do_nothing_without_input() {
+            let dir = tempfile::tempdir().unwrap();
+
+            kdlfmt_command(dir.path())
+                .arg("format")
+                .arg("--kdl-version")
+                .arg("v1")
+                .assert()
+                .success();
+        }
     }
 
     mod v2 {
@@ -337,6 +356,18 @@ mod test_format_command {
                 .assert()
                 .success()
                 .stdout(predicates::str::contains(FORMATTED_V2_CODE));
+        }
+
+        #[test]
+        fn do_nothing_without_input() {
+            let dir = tempfile::tempdir().unwrap();
+
+            kdlfmt_command(dir.path())
+                .arg("format")
+                .arg("--kdl-version")
+                .arg("v2")
+                .assert()
+                .success();
         }
     }
 }
@@ -460,6 +491,13 @@ mod test_check_command {
                     .failure();
             };
         }
+
+        #[test]
+        fn do_nothing_without_input() {
+            let dir = tempfile::tempdir().unwrap();
+
+            kdlfmt_command(dir.path()).arg("check").assert().success();
+        }
     }
 
     mod v1 {
@@ -522,6 +560,18 @@ mod test_check_command {
                 .assert()
                 .failure();
         }
+
+        #[test]
+        fn do_nothing_without_input() {
+            let dir = tempfile::tempdir().unwrap();
+
+            kdlfmt_command(dir.path())
+                .arg("check")
+                .arg("--kdl-version")
+                .arg("v1")
+                .assert()
+                .success();
+        }
     }
 
     mod v2 {
@@ -583,6 +633,18 @@ mod test_check_command {
                 .write_stdin(BROKEN_V2_CODE)
                 .assert()
                 .failure();
+        }
+
+        #[test]
+        fn do_nothing_without_input() {
+            let dir = tempfile::tempdir().unwrap();
+
+            kdlfmt_command(dir.path())
+                .arg("check")
+                .arg("--kdl-version")
+                .arg("v2")
+                .assert()
+                .success();
         }
     }
 }
