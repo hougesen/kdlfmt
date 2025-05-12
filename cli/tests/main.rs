@@ -199,7 +199,6 @@ mod test_format_command {
     }
 
     mod auto {
-
         use crate::{
             BROKEN_V1_CODE, BROKEN_V2_CODE, FORMATTED_V1_CODE, FORMATTED_V2_CODE, kdlfmt_command,
             setup_test_input,
@@ -235,6 +234,58 @@ mod test_format_command {
                 let output = std::fs::read_to_string(file.path()).unwrap();
 
                 assert_eq!(output, FORMATTED_V2_CODE);
+            };
+        }
+
+        #[test]
+        fn accepts_multiple_paths() {
+            let dir = tempfile::tempdir().unwrap();
+
+            {
+                let file1 = setup_test_input(dir.path(), BROKEN_V1_CODE);
+                let file2 = setup_test_input(dir.path(), BROKEN_V1_CODE);
+
+                kdlfmt_command(dir.path())
+                    .arg("format")
+                    .arg(file1.path())
+                    .arg(file2.path())
+                    .assert()
+                    .success();
+
+                {
+                    let output = std::fs::read_to_string(file1.path()).unwrap();
+
+                    assert_eq!(output, FORMATTED_V1_CODE);
+                };
+
+                {
+                    let output = std::fs::read_to_string(file2.path()).unwrap();
+
+                    assert_eq!(output, FORMATTED_V1_CODE);
+                };
+            };
+
+            {
+                let file1 = setup_test_input(dir.path(), BROKEN_V2_CODE);
+                let file2 = setup_test_input(dir.path(), BROKEN_V2_CODE);
+
+                kdlfmt_command(dir.path())
+                    .arg("format")
+                    .arg(file1.path())
+                    .arg(file2.path())
+                    .assert()
+                    .success();
+                {
+                    let output = std::fs::read_to_string(file1.path()).unwrap();
+
+                    assert_eq!(output, FORMATTED_V2_CODE);
+                };
+
+                {
+                    let output = std::fs::read_to_string(file2.path()).unwrap();
+
+                    assert_eq!(output, FORMATTED_V2_CODE);
+                };
             };
         }
 
@@ -319,6 +370,35 @@ mod test_format_command {
                 .assert()
                 .success();
         }
+
+        #[test]
+        fn accepts_multiple_paths() {
+            let dir = tempfile::tempdir().unwrap();
+
+            let file1 = setup_test_input(dir.path(), BROKEN_V1_CODE);
+            let file2 = setup_test_input(dir.path(), BROKEN_V1_CODE);
+
+            kdlfmt_command(dir.path())
+                .arg("format")
+                .arg("--kdl-version")
+                .arg("v1")
+                .arg(file1.path())
+                .arg(file2.path())
+                .assert()
+                .success();
+
+            {
+                let output = std::fs::read_to_string(file1.path()).unwrap();
+
+                assert_eq!(output, FORMATTED_V1_CODE);
+            };
+
+            {
+                let output = std::fs::read_to_string(file2.path()).unwrap();
+
+                assert_eq!(output, FORMATTED_V1_CODE);
+            };
+        }
     }
 
     mod v2 {
@@ -368,6 +448,35 @@ mod test_format_command {
                 .arg("v2")
                 .assert()
                 .success();
+        }
+
+        #[test]
+        fn accepts_multiple_paths() {
+            let dir = tempfile::tempdir().unwrap();
+
+            let file1 = setup_test_input(dir.path(), BROKEN_V2_CODE);
+            let file2 = setup_test_input(dir.path(), BROKEN_V2_CODE);
+
+            kdlfmt_command(dir.path())
+                .arg("format")
+                .arg("--kdl-version")
+                .arg("v2")
+                .arg(file1.path())
+                .arg(file2.path())
+                .assert()
+                .success();
+
+            {
+                let output = std::fs::read_to_string(file1.path()).unwrap();
+
+                assert_eq!(output, FORMATTED_V2_CODE);
+            };
+
+            {
+                let output = std::fs::read_to_string(file2.path()).unwrap();
+
+                assert_eq!(output, FORMATTED_V2_CODE);
+            };
         }
     }
 }
@@ -498,6 +607,35 @@ mod test_check_command {
 
             kdlfmt_command(dir.path()).arg("check").assert().success();
         }
+
+        #[test]
+        fn accepts_multiple_paths() {
+            let dir = tempfile::tempdir().unwrap();
+
+            {
+                let file1 = setup_test_input(dir.path(), FORMATTED_V1_CODE);
+                let file2 = setup_test_input(dir.path(), FORMATTED_V1_CODE);
+
+                kdlfmt_command(dir.path())
+                    .arg("check")
+                    .arg(file1.path())
+                    .arg(file2.path())
+                    .assert()
+                    .success();
+            };
+
+            {
+                let file1 = setup_test_input(dir.path(), FORMATTED_V2_CODE);
+                let file2 = setup_test_input(dir.path(), FORMATTED_V2_CODE);
+
+                kdlfmt_command(dir.path())
+                    .arg("check")
+                    .arg(file1.path())
+                    .arg(file2.path())
+                    .assert()
+                    .success();
+            };
+        }
     }
 
     mod v1 {
@@ -572,6 +710,23 @@ mod test_check_command {
                 .assert()
                 .success();
         }
+
+        #[test]
+        fn accepts_multiple_paths() {
+            let dir = tempfile::tempdir().unwrap();
+
+            let file1 = setup_test_input(dir.path(), FORMATTED_V1_CODE);
+            let file2 = setup_test_input(dir.path(), FORMATTED_V1_CODE);
+
+            kdlfmt_command(dir.path())
+                .arg("check")
+                .arg("--kdl-version")
+                .arg("v1")
+                .arg(file1.path())
+                .arg(file2.path())
+                .assert()
+                .success();
+        }
     }
 
     mod v2 {
@@ -643,6 +798,23 @@ mod test_check_command {
                 .arg("check")
                 .arg("--kdl-version")
                 .arg("v2")
+                .assert()
+                .success();
+        }
+
+        #[test]
+        fn accepts_multiple_paths() {
+            let dir = tempfile::tempdir().unwrap();
+
+            let file1 = setup_test_input(dir.path(), FORMATTED_V2_CODE);
+            let file2 = setup_test_input(dir.path(), FORMATTED_V2_CODE);
+
+            kdlfmt_command(dir.path())
+                .arg("check")
+                .arg("--kdl-version")
+                .arg("v2")
+                .arg(file1.path())
+                .arg(file2.path())
                 .assert()
                 .success();
         }
