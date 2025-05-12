@@ -1,5 +1,3 @@
-use std::str::FromStr;
-
 use crate::{
     cli::{FormatCommandArguments, read_stdin},
     config::KdlFmtConfig,
@@ -38,10 +36,7 @@ pub fn run_from_args(
     let mut paths = Vec::new();
 
     for path in &args.input {
-        paths.push(
-            std::path::PathBuf::from_str(path)
-                .map_err(|_| KdlFmtError::InvalidPath(path.clone()))?,
-        );
+        paths.push(std::path::PathBuf::from(path));
     }
 
     if paths.is_empty() {
@@ -60,7 +55,7 @@ pub fn run_from_args(
                 .extension()
                 .is_some_and(|ft| ft == KDL_FILE_EXTENSION)
         {
-            let input = std::fs::read_to_string(file_path)?;
+            let input = std::fs::read_to_string(file_path).map_err(KdlFmtError::Io)?;
 
             let (parsed, version) = parse_kdl(&input, args.kdl_version)
                 .map_err(|error| KdlFmtError::ParseKdl(Some(file_path.to_path_buf()), error))?;

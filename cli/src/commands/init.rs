@@ -4,7 +4,7 @@ use crate::{cli::InitCommandArguments, config::KdlFmtConfig, error::KdlFmtError,
 pub fn run(args: &InitCommandArguments) -> Result<(), KdlFmtError> {
     let config_path = std::path::Path::new(KdlFmtConfig::filename());
 
-    if !args.force && config_path.try_exists()? {
+    if !args.force && config_path.try_exists().map_err(KdlFmtError::Io)? {
         return Err(KdlFmtError::ConfigAlreadyExist);
     }
 

@@ -17,12 +17,6 @@ All notable changes to this project will be documented in this file. Dates are d
 - docs: add npm/npx installation instructions [`#116`](https://github.com/hougesen/kdlfmt/pull/116)
 - build: custom gh runner for x86_64-unknown-linux-musl & aarch64-unknown-linux-gnu [`#115`](https://github.com/hougesen/kdlfmt/pull/115)
 - docs: add Homebrew installation instructions [`#114`](https://github.com/hougesen/kdlfmt/pull/114)
-- test: --stdin arg with format and check [`81a2281`](https://github.com/hougesen/kdlfmt/commit/81a2281faca8cf4215110ca4ccae9a08b6c6073a)
-- test(format): validate format with --kdl-version [`a2360d2`](https://github.com/hougesen/kdlfmt/commit/a2360d20102c6a4478c7d1d6bc4b738267de8be5)
-- test: validate check fails with unformatted code [`d7d13cd`](https://github.com/hougesen/kdlfmt/commit/d7d13cde1b8826a3d163250fececd77426aee7ae)
-- test: check if something happens with empty input [`9b8100f`](https://github.com/hougesen/kdlfmt/commit/9b8100f10b6d206ea6719d1baf70fbfd94dede4c)
-- test: check returns success if input formatted [`3226dbf`](https://github.com/hougesen/kdlfmt/commit/3226dbf00ba85c022218bfeb61975e7697e3670f)
-- test: format --help [`b9100cd`](https://github.com/hougesen/kdlfmt/commit/b9100cdda0792d6db16e968bbdb45e7675b27cef)
 
 #### [v0.0.16](https://github.com/hougesen/kdlfmt/compare/v0.0.15...v0.0.16)
 

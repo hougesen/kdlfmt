@@ -1,5 +1,3 @@
-use std::str::FromStr;
-
 use crate::{
     cli::{FormatCommandArguments, read_stdin},
     config::KdlFmtConfig,
@@ -33,10 +31,7 @@ fn run_from_args(args: &FormatCommandArguments, config: &KdlFmtConfig) -> Result
     let mut paths = Vec::new();
 
     for path in &args.input {
-        paths.push(
-            std::path::PathBuf::from_str(path)
-                .map_err(|_| KdlFmtError::InvalidPath(path.clone()))?,
-        );
+        paths.push(std::path::PathBuf::from(path));
     }
 
     if paths.is_empty() {
@@ -59,7 +54,7 @@ fn run_from_args(args: &FormatCommandArguments, config: &KdlFmtConfig) -> Result
                 .extension()
                 .is_some_and(|ft| ft == KDL_FILE_EXTENSION)
         {
-            let input = std::fs::read_to_string(file_path)?;
+            let input = std::fs::read_to_string(file_path).map_err(KdlFmtError::Io)?;
 
             let (parsed, version) = parse_kdl(&input, args.kdl_version)
                 .map_err(|error| KdlFmtError::ParseKdl(Some(file_path.to_path_buf()), error))?;
@@ -73,7 +68,7 @@ fn run_from_args(args: &FormatCommandArguments, config: &KdlFmtConfig) -> Result
 
             let formatted = format_kdl(parsed, &format_config, version);
 
-            std::fs::write(file_path, &formatted).map_err(KdlFmtError::from)?;
+            std::fs::write(file_path, &formatted).map_err(KdlFmtError::Io)?;
 
             let time_elapsed = file_start_time.elapsed();
 
