@@ -4,12 +4,11 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.0.17...HEAD)
 
-- chore: release v0.0.17 [`#130`](https://github.com/hougesen/kdlfmt/pull/130)
-
 #### [v0.0.17](https://github.com/hougesen/kdlfmt/compare/v0.0.16...v0.0.17)
 
 > 12 May 2025
 
+- chore: release v0.0.17 [`#130`](https://github.com/hougesen/kdlfmt/pull/130)
 - docs: automatically update command help in readme [`#129`](https://github.com/hougesen/kdlfmt/pull/129)
 - feat: add --config path arg to format command [`#128`](https://github.com/hougesen/kdlfmt/pull/128)
 - test(cli): validate check and format commands [`#127`](https://github.com/hougesen/kdlfmt/pull/127)
