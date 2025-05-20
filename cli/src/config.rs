@@ -36,11 +36,10 @@ impl KdlFmtConfig {
     pub fn load(path: Option<&std::path::PathBuf>) -> Result<Self, KdlFmtError> {
         let mut config = Self::default();
 
-        let config_result = if let Some(path) = path {
-            std::fs::read_to_string(path)
-        } else {
-            std::fs::read_to_string(Self::filename())
-        };
+        let config_result = path.map_or_else(
+            || std::fs::read_to_string(Self::filename()),
+            std::fs::read_to_string,
+        );
 
         if let Ok(config_str) = config_result {
             // TODO: custom parse error
@@ -61,7 +60,7 @@ impl KdlFmtConfig {
                 .get_arg(Self::indent_size_key())
                 .and_then(kdl::KdlValue::as_integer)
             {
-                config.indent = Self::get_indent(indent_size.max(0) as usize, config.use_tabs);
+                config.indent = Self::get_indent(indent_size.max(1) as usize, config.use_tabs);
                 config.from_kdlfmt_file = true;
             }
         }

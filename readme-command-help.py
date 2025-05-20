@@ -10,13 +10,12 @@ def generate_help_section(command: Optional[str], readme: str) -> str:
 
     command_args.append("--help")
 
+    cmd_result = subprocess.run(command_args, capture_output=True)
+
+    cmd_result.check_returncode()
+
     help_output = "\n".join(
-        [
-            line.rstrip()
-            for line in subprocess.run(command_args, capture_output=True)
-            .stdout.decode()
-            .splitlines()
-        ]
+        [line.rstrip() for line in cmd_result.stdout.decode().splitlines()]
     )
 
     key = (command if command is not None else "base") + "-command-help"
