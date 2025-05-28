@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 - refactor(test): separate cli e2e tests [`#132`](https://github.com/hougesen/kdlfmt/pull/132)
 - build(deps): update sub dependencies [`#131`](https://github.com/hougesen/kdlfmt/pull/131)
+- feat: migrate github action from hougesen/mdsf [`f6b3574`](https://github.com/hougesen/kdlfmt/commit/f6b3574163e13c814af32e5eac890056e6e23b7f)
 
 #### [v0.0.17](https://github.com/hougesen/kdlfmt/compare/v0.0.16...v0.0.17)
 

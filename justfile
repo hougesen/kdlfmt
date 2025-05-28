@@ -26,7 +26,7 @@ test-coverage:
 
 format:
     ruff format
-    cargo fmt
+    cargo +nightly fmt
     just --fmt --unstable .
     mdsf format .
     npx prettier --write --cache .
@@ -37,12 +37,19 @@ changelog:
 update-readme-command-help:
     python3 readme-command-help.py
 
+precommit-github-action:
+    cd github-action && npm i
+    cd github-action && npm run lint:biome:fix
+    cd github-action && npm run lint:eslint:fix
+    cd github-action && npm run build
+
 precommit:
+    just precommit-github-action 
     just changelog
     just update-readme-command-help
     just format
     just build
     just lint
     just test
-    typos --exclude CHANGELOG.md .
+    typos --exclude CHANGELOG.md --exclude github-action/dist .
     dist init --yes
