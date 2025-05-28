@@ -2,7 +2,11 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.0.17...HEAD)
+#### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.0...HEAD)
+
+#### [v0.1.0](https://github.com/hougesen/kdlfmt/compare/v0.0.17...v0.1.0)
+
+> 28 May 2025
 
 - chore: release v0.1.0 [`#138`](https://github.com/hougesen/kdlfmt/pull/138)
 - chore: setup action.yml [`#137`](https://github.com/hougesen/kdlfmt/pull/137)

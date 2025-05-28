@@ -8,8 +8,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install kdlfmt
-        uses: hougesen/kdlfmt@main
+      - name: setup-kdlfmt
+        uses: hougesen/kdlfmt@v0.1.0
 
       - name: Run kdlfmt
         run: kdlfmt check .
