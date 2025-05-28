@@ -75,7 +75,7 @@ export async function setup() {
 
   const pathToTarball = await downloadTool(downloadPath);
 
-  const pathToCLI = await extractTar(pathToTarball);
+  const pathToCLI = await extractTar(pathToTarball, undefined, ["x"]);
 
   addPath(path.join(pathToCLI, file));
 }

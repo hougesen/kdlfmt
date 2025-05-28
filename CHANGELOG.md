@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file. Dates are d
 
 - build(deps): bump clap_complete_nushell from 4.5.5 to 4.5.6 [`#136`](https://github.com/hougesen/kdlfmt/pull/136)
 - ci: run hougesen/kdlfmt@v0.1.0 [`8a96285`](https://github.com/hougesen/kdlfmt/commit/8a96285242cac3b5f33cba4ee77e44bcf39b7505)
+- fix(github-action): extract .tar.xz [`7dada53`](https://github.com/hougesen/kdlfmt/commit/7dada53b30d632622b4d4eddfe08fd636ae4b0d1)
+- chore: test local action [`bb5ef2e`](https://github.com/hougesen/kdlfmt/commit/bb5ef2eab3b401030181d150728e954d75e078a1)
 
 #### [v0.1.0](https://github.com/hougesen/kdlfmt/compare/v0.0.17...v0.1.0)
 
