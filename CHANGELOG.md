@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.0.17...HEAD)
 
+- chore: release v0.1.0 [`#138`](https://github.com/hougesen/kdlfmt/pull/138)
+- chore: setup action.yml [`#137`](https://github.com/hougesen/kdlfmt/pull/137)
 - feat: official kdlfmt github action [`#135`](https://github.com/hougesen/kdlfmt/pull/135)
 - build(deps): bump clap_complete from 4.5.50 to 4.5.51 [`#133`](https://github.com/hougesen/kdlfmt/pull/133)
 - build(deps): bump clap from 4.5.38 to 4.5.39 [`#134`](https://github.com/hougesen/kdlfmt/pull/134)
