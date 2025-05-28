@@ -201,6 +201,37 @@ Options:
 
 It uses the same syntax as `.gitignore` files.
 
+### GitHub Action
+
+There are a lot of different ways to run `kdlfmt` using GitHub actions.
+
+The easiest way, in my opinion, is to use the official GitHub action to install `kdlfmt`.
+
+After that you can run the binary like you would in your terminal.
+
+```yaml
+name: kdlfmt
+on:
+  - push
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install kdlfmt
+        uses: hougesen/kdlfmt@main
+
+      - name: Run kdlfmt
+        run: kdlfmt format --log-level warn .
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: "style: formatted kdl"
+```
+
 ### Shell completion
 
 Shell completion can be generated using the `kdlfmt completions` command.

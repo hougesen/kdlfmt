@@ -6,6 +6,7 @@
     "kdl": "kdlfmt",
     "nushell": "nufmt",
     "shell": "shfmt",
+    "yaml": "prettier",
     "zsh": "shfmt"
   }
 }
