@@ -1,2 +1,5 @@
 .github/workflows/release.yml
 cli/wix/main.wxs
+github-action/dist
+github-action/node_modules
+node_modules

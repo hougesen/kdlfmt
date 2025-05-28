@@ -12,10 +12,7 @@ jobs:
     name: lint
     strategy:
       matrix:
-        os:
-          - windows-latest
-          - macos-latest
-          - ubuntu-latest
+        os: [windows-latest, macos-latest, ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -36,3 +33,28 @@ jobs:
           files: codecov.json
           slug: hougesen/kdlfmt
           token: ${{ secrets.CODECOV_TOKEN }}
+  validate-github-action:
+    name: validate-github-action
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [22]
+    defaults:
+      run:
+        working-directory: ./github-action
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          check-latest: true
+      - uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: npm i
+      - run: npm run lint:biome
+      - run: npm run lint:eslint
