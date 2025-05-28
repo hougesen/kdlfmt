@@ -1,0 +1,64 @@
+[tasks.build]
+run = ["cargo check", "cargo build", "cargo build --release"]
+
+[tasks.build-local]
+run = [
+  "mise tasks run build",
+  "sudo cp target/release/kdlfmt /usr/local/bin/kdlfmt-local",
+]
+
+[tasks.changelog]
+run = ["npx auto-changelog -u --hide-credit -l 100 -b 100"]
+
+[tasks.format]
+run = [
+  "ruff format",
+  "cargo +nightly fmt",
+  "mise fmt",
+  "mdsf format .",
+  "npx prettier --write --cache .",
+]
+
+[tasks.lint]
+run = [
+  "cargo fmt -- --check --color always",
+  "cargo clippy --all-targets --all-features",
+]
+
+[tasks.lint-aggressive]
+run = [
+  "cargo clean",
+  "cargo clippy --fix --allow-staged --all-targets --all-features -- -Dclippy::style -Dclippy::perf -Dclippy::pedantic -Dclippy::all -Dclippy::cargo -Dclippy::complexity -Dclippy::nursery -Dclippy::suspicious -Aclippy::module_name_repetitions -Aclippy::missing_errors_doc -Aclippy::must_use_candidate -Aclippy::multiple_crate_versions -Aclippy::needless_raw_strings -Aclippy::needless_raw_string_hashes",
+  "cargo clean",
+]
+
+[tasks.precommit]
+run = [
+  "mise tasks run precommit-github-action ",
+  "mise tasks run changelog",
+  "mise tasks run update-readme-command-help",
+  "mise tasks run format",
+  "mise tasks run build",
+  "mise tasks run lint",
+  "mise tasks run test",
+  "typos --exclude CHANGELOG.md --exclude github-action/dist .",
+  "dist init --yes",
+]
+
+[tasks.precommit-github-action]
+dir = "github-action"
+run = [
+  "npm i",
+  "npm run lint:biome:fix",
+  "npm run lint:eslint:fix",
+  "npm run build",
+]
+
+[tasks.test]
+run = ["mise tasks run lint", "RUST_BACKTRACE=full cargo test --release"]
+
+[tasks.test-coverage]
+run = ["cargo llvm-cov clean", "cargo llvm-cov --all-features --open"]
+
+[tasks.update-readme-command-help]
+run = ["python3 readme-command-help.py"]
