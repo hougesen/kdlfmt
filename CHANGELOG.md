@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.0.17...HEAD)
 
+- refactor(test): separate cli e2e tests [`#132`](https://github.com/hougesen/kdlfmt/pull/132)
 - build(deps): update sub dependencies [`#131`](https://github.com/hougesen/kdlfmt/pull/131)
 
 #### [v0.0.17](https://github.com/hougesen/kdlfmt/compare/v0.0.16...v0.0.17)

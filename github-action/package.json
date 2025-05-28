@@ -1,0 +1,45 @@
+{
+  "name": "setup-kdlfmt",
+  "version": "0.0.17",
+  "description": "Setup kdlfmt cli in GitHub Actions",
+  "main": "src/index.mjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hougesen/kdlfmt.git",
+    "directory": "github-action"
+  },
+  "author": {
+    "name": "Mads Hougesen",
+    "url": "https://mhouge.dk",
+    "email": "mads@mhouge.dk"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hougesen/kdlfmt/issues"
+  },
+  "homepage": "https://github.com/hougesen/kdlfmt#readme",
+  "keywords": [
+    "kdl",
+    "kdlfmt",
+    "github-action"
+  ],
+  "scripts": {
+    "build": "node esbuild.mjs",
+    "lint:biome": "biome check",
+    "lint:biome:fix": "biome check --write",
+    "lint:eslint": "eslint .",
+    "lint:eslint:fix": "eslint --fix ."
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/tool-cache": "^2.0.2"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@eslint/js": "^9.27.0",
+    "@types/node": "^22.15.24",
+    "esbuild": "^0.25.5",
+    "eslint": "^9.27.0",
+    "globals": "^16.2.0"
+  }
+}

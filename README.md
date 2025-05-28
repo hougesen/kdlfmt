@@ -203,7 +203,7 @@ It uses the same syntax as `.gitignore` files.
 
 ### Shell completion
 
-Shell completion can be generated using the `kdl completions` command.
+Shell completion can be generated using the `kdlfmt completions` command.
 
 <!-- START_SECTION:completions-command-help -->
 
@@ -263,7 +263,7 @@ Add the following to `~/.elvish/rc.elv`.
 eval (kdlfmt completions elvish)
 ```
 
-### Nushell
+#### Nushell
 
 Generate completions for [nushell](https://github.com/nushell/nushell).
 
