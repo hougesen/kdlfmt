@@ -223,8 +223,8 @@ jobs:
       - name: Install kdlfmt
         uses: hougesen/kdlfmt@main
 
-      - name: Run kdlfmt
-        run: kdlfmt format --log-level warn .
+      - name: Run kdlfmt format
+        run: kdlfmt format .
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v9

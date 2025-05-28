@@ -71,11 +71,11 @@ export async function setup() {
 
   const file = `kdlfmt-${platformArch}`;
 
-  const downloadPath = await getPackageDownloadPath(version, `${file}.tar.gz`);
+  const downloadPath = await getPackageDownloadPath(version, `${file}.tar.xz`);
 
   const pathToTarball = await downloadTool(downloadPath);
 
-  const pathToCLI = await extractTar(pathToTarball);
+  const pathToCLI = await extractTar(pathToTarball, undefined, ["x"]);
 
   addPath(path.join(pathToCLI, file));
 }
