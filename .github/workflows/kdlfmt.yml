@@ -9,7 +9,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: setup-kdlfmt
-        uses: hougesen/kdlfmt@fix/github-action/extract-tar.xz
+        uses: hougesen/kdlfmt@main
 
       - name: Run kdlfmt
         run: kdlfmt check .
