@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.0...HEAD)
 
+- build(deps): bump clap_complete_nushell from 4.5.5 to 4.5.6 [`#136`](https://github.com/hougesen/kdlfmt/pull/136)
+- ci: run hougesen/kdlfmt@v0.1.0 [`8a96285`](https://github.com/hougesen/kdlfmt/commit/8a96285242cac3b5f33cba4ee77e44bcf39b7505)
+
 #### [v0.1.0](https://github.com/hougesen/kdlfmt/compare/v0.0.17...v0.1.0)
 
 > 28 May 2025
