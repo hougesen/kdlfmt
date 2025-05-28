@@ -1,0 +1,4 @@
+github-action/dist linguist-vendored
+github-action/dist/* linguist-vendored
+github-action/dist/** linguist-vendored
+github-action/dist/** -diff linguist-generated=true

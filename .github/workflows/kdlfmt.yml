@@ -2,7 +2,7 @@ name: kdlfmt
 on:
   - push
 jobs:
-  format:
+  verify:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
