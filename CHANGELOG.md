@@ -2,8 +2,22 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.0...HEAD)
+#### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.1...HEAD)
 
+#### [v0.1.1](https://github.com/hougesen/kdlfmt/compare/v0.1.0...v0.1.1)
+
+> 11 June 2025
+
+- chore: release v0.1.1 [`#149`](https://github.com/hougesen/kdlfmt/pull/149)
+- build(deps): bump clap from 4.5.39 to 4.5.40 [`#146`](https://github.com/hougesen/kdlfmt/pull/146)
+- build(deps): bump clap_complete from 4.5.52 to 4.5.54 [`#147`](https://github.com/hougesen/kdlfmt/pull/147)
+- build(deps): bump clap_complete_nushell from 4.5.6 to 4.5.7 [`#148`](https://github.com/hougesen/kdlfmt/pull/148)
+- build(deps-dev): bump @types/node in /github-action [`#145`](https://github.com/hougesen/kdlfmt/pull/145)
+- build(deps-dev): bump eslint from 9.27.0 to 9.28.0 in /github-action [`#143`](https://github.com/hougesen/kdlfmt/pull/143)
+- build(deps-dev): bump @types/node in /github-action [`#144`](https://github.com/hougesen/kdlfmt/pull/144)
+- build(deps-dev): bump @eslint/js from 9.27.0 to 9.28.0 in /github-action [`#142`](https://github.com/hougesen/kdlfmt/pull/142)
+- build(deps): bump clap_complete from 4.5.51 to 4.5.52 [`#141`](https://github.com/hougesen/kdlfmt/pull/141)
+- chore: use mise instead of just for tasks [`#140`](https://github.com/hougesen/kdlfmt/pull/140)
 - fix(github-action): extract .tar.xz [`#139`](https://github.com/hougesen/kdlfmt/pull/139)
 - build(deps): bump clap_complete_nushell from 4.5.5 to 4.5.6 [`#136`](https://github.com/hougesen/kdlfmt/pull/136)
 - ci: run hougesen/kdlfmt@v0.1.0 [`8a96285`](https://github.com/hougesen/kdlfmt/commit/8a96285242cac3b5f33cba4ee77e44bcf39b7505)
