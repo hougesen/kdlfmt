@@ -1,6 +1,6 @@
 {
   "name": "setup-kdlfmt",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Setup kdlfmt cli in GitHub Actions",
   "main": "src/index.mjs",
   "repository": {
