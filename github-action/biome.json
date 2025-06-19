@@ -1,5 +1,15 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.0.0/schema.json",
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
+  "files": {
+    "includes": ["**", "!**/dist"]
+  },
   "formatter": {
     "enabled": false
   },
@@ -9,15 +19,9 @@
       "recommended": true
     }
   },
-  "organizeImports": {
-    "enabled": true
-  },
   "vcs": {
     "clientKind": "git",
     "enabled": true,
     "useIgnoreFile": true
-  },
-  "files": {
-    "ignore": ["dist"]
   }
 }
