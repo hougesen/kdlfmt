@@ -68,13 +68,12 @@ fn run_from_args(args: &FormatCommandArguments, config: &KdlFmtConfig) -> Result
 
             let formatted = format_kdl(parsed, &format_config, version);
 
-            std::fs::write(file_path, &formatted).map_err(KdlFmtError::Io)?;
-
             let time_elapsed = file_start_time.elapsed();
 
             if formatted == input {
                 print_format_unchanged_file(file_path, time_elapsed);
             } else {
+                std::fs::write(file_path, &formatted).map_err(KdlFmtError::Io)?;
                 print_format_changed_file(file_path, time_elapsed);
             }
 
