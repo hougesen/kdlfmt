@@ -2,13 +2,17 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.1...HEAD)
+#### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.2...HEAD)
 
+#### [v0.1.2](https://github.com/hougesen/kdlfmt/compare/v0.1.1...v0.1.2)
+
+> 19 June 2025
+
+- build(deps-dev): bump @biomejs/biome from 1.9.4 to 2.0.0 in /github-action [`#155`](https://github.com/hougesen/kdlfmt/pull/155)
 - fix: skip timestamp update when no changes are applied [`#154`](https://github.com/hougesen/kdlfmt/pull/154)
 - build(deps-dev): bump @types/node in /github-action [`#152`](https://github.com/hougesen/kdlfmt/pull/152)
 - build(deps-dev): bump eslint from 9.28.0 to 9.29.0 in /github-action [`#150`](https://github.com/hougesen/kdlfmt/pull/150)
 - build(deps-dev): bump @eslint/js from 9.28.0 to 9.29.0 in /github-action [`#151`](https://github.com/hougesen/kdlfmt/pull/151)
-- build(deps-dev): bump @biomejs/biome in /github-action [`148cd8a`](https://github.com/hougesen/kdlfmt/commit/148cd8a2b10b765eccc7b12b92dc2532a8c98c18)
 
 #### [v0.1.1](https://github.com/hougesen/kdlfmt/compare/v0.1.0...v0.1.1)
 
