@@ -1,16 +1,16 @@
 [package]
 name = "kdlfmt"
 version = { workspace = true }
+authors = { workspace = true }
 edition = { workspace = true }
 description = { workspace = true }
-authors = { workspace = true }
-license = { workspace = true }
-repository = { workspace = true }
-keywords = { workspace = true }
-homepage = { workspace = true }
-readme = { workspace = true }
-categories = { workspace = true }
 documentation = { workspace = true }
+readme = { workspace = true }
+homepage = { workspace = true }
+repository = { workspace = true }
+license = { workspace = true }
+keywords = { workspace = true }
+categories = { workspace = true }
 
 [package.metadata.wix]
 upgrade-guid = "66958F36-1ACD-4F8A-9770-F49752B07CDE"

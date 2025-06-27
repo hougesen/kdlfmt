@@ -95,38 +95,38 @@ impl KdlFmtConfig {
 
     #[inline]
     pub fn get_editorconfig_or_default(&self, path: &std::path::Path) -> Self {
-        if !self.from_kdlfmt_file {
-            if let Ok(mut properties) = ec4rs::properties_of(path) {
-                properties.use_fallbacks();
+        if !self.from_kdlfmt_file
+            && let Ok(mut properties) = ec4rs::properties_of(path)
+        {
+            properties.use_fallbacks();
 
-                let use_tabs = properties
-                    .get::<IndentStyle>()
-                    .is_ok_and(|indent_style| matches!(indent_style, IndentStyle::Tabs));
+            let use_tabs = properties
+                .get::<IndentStyle>()
+                .is_ok_and(|indent_style| matches!(indent_style, IndentStyle::Tabs));
 
-                let indent_size = properties.get::<ec4rs::property::IndentSize>().map_or(
-                    if use_tabs { 1 } else { self.indent.len() },
-                    |value| match value {
-                        ec4rs::property::IndentSize::Value(value) => value,
-                        ec4rs::property::IndentSize::UseTabWidth => {
-                            if let Ok(ec4rs::property::TabWidth::Value(value)) =
-                                properties.get::<ec4rs::property::TabWidth>()
-                            {
-                                value
-                            } else {
-                                1
-                            }
+            let indent_size = properties.get::<ec4rs::property::IndentSize>().map_or(
+                if use_tabs { 1 } else { self.indent.len() },
+                |value| match value {
+                    ec4rs::property::IndentSize::Value(value) => value,
+                    ec4rs::property::IndentSize::UseTabWidth => {
+                        if let Ok(ec4rs::property::TabWidth::Value(value)) =
+                            properties.get::<ec4rs::property::TabWidth>()
+                        {
+                            value
+                        } else {
+                            1
                         }
-                    },
-                );
+                    }
+                },
+            );
 
-                let indent = Self::get_indent(indent_size, use_tabs);
+            let indent = Self::get_indent(indent_size, use_tabs);
 
-                return Self {
-                    use_tabs,
-                    indent,
-                    from_kdlfmt_file: false,
-                };
-            }
+            return Self {
+                use_tabs,
+                indent,
+                from_kdlfmt_file: false,
+            };
         }
 
         self.clone()

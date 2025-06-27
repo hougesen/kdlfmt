@@ -1,20 +1,20 @@
 [workspace]
+resolver = "3"
 members = ["cli"]
 exclude = []
-resolver = "3"
 
 [workspace.package]
 version = "0.1.2"
+authors = ["Mads Hougesen <mads@mhouge.dk>"]
 edition = "2024"
 description = "A code formatter for kdl documents."
-authors = ["Mads Hougesen <mads@mhouge.dk>"]
-license = "MIT"
-repository = "https://github.com/hougesen/kdlfmt"
-keywords = ["kdl", "formatter", "pretty-printing", "code-formatter"]
-homepage = "https://github.com/hougesen/kdlfmt?tab=readme-ov-file"
 documentation = "https://github.com/hougesen/kdlfmt#readme"
 readme = "README.md"
-categories = ["development-tools", "command-line-utilities"]
+homepage = "https://github.com/hougesen/kdlfmt?tab=readme-ov-file"
+repository = "https://github.com/hougesen/kdlfmt"
+license = "MIT"
+keywords = ["code-formatter", "formatter", "kdl", "pretty-printing"]
+categories = ["command-line-utilities", "development-tools"]
 
 [workspace.dependencies]
 assert_cmd = "2.0.17"

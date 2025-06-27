@@ -4,10 +4,13 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.2...HEAD)
 
+- build(deps-dev): bump @biomejs/biome in /github-action [`#157`](https://github.com/hougesen/kdlfmt/pull/157)
+
 #### [v0.1.2](https://github.com/hougesen/kdlfmt/compare/v0.1.1...v0.1.2)
 
 > 19 June 2025
 
+- chore: release v0.1.2 [`#156`](https://github.com/hougesen/kdlfmt/pull/156)
 - build(deps-dev): bump @biomejs/biome from 1.9.4 to 2.0.0 in /github-action [`#155`](https://github.com/hougesen/kdlfmt/pull/155)
 - fix: skip timestamp update when no changes are applied [`#154`](https://github.com/hougesen/kdlfmt/pull/154)
 - build(deps-dev): bump @types/node in /github-action [`#152`](https://github.com/hougesen/kdlfmt/pull/152)
