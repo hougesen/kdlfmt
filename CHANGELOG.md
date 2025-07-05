@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.2...HEAD)
 
+- build(deps-dev): bump @biomejs/biome in /github-action [`#160`](https://github.com/hougesen/kdlfmt/pull/160)
+- build(deps-dev): bump eslint from 9.29.0 to 9.30.0 in /github-action [`#159`](https://github.com/hougesen/kdlfmt/pull/159)
+- refactor: apply rust 1.88.0 fixes [`#158`](https://github.com/hougesen/kdlfmt/pull/158)
 - build(deps-dev): bump @biomejs/biome in /github-action [`#157`](https://github.com/hougesen/kdlfmt/pull/157)
 
 #### [v0.1.2](https://github.com/hougesen/kdlfmt/compare/v0.1.1...v0.1.2)
