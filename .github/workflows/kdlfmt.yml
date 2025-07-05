@@ -1,15 +1,14 @@
 name: kdlfmt
-on:
-  - push
+on: [push]
 jobs:
   verify:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: setup-kdlfmt
         uses: hougesen/kdlfmt@main
-
       - name: Run kdlfmt
         run: kdlfmt check .
