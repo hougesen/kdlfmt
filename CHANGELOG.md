@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.2...HEAD)
 
+- build(deps): lock @types/node to v22.x [`#170`](https://github.com/hougesen/kdlfmt/pull/170)
 - build(deps-dev): bump globals from 16.2.0 to 16.3.0 in /github-action [`#169`](https://github.com/hougesen/kdlfmt/pull/169)
 - build(deps-dev): bump eslint from 9.30.0 to 9.30.1 in /github-action [`#167`](https://github.com/hougesen/kdlfmt/pull/167)
 - ci: set permissions for release-crates.yml [`#165`](https://github.com/hougesen/kdlfmt/pull/165)
