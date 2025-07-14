@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.2...HEAD)
 
+- build(deps-dev): bump @eslint/js from 9.30.1 to 9.31.0 in /github-action [`#179`](https://github.com/hougesen/kdlfmt/pull/179)
+- build(deps): bump clap_complete_nushell from 4.5.7 to 4.5.8 [`#174`](https://github.com/hougesen/kdlfmt/pull/174)
+- build(deps): bump clap from 4.5.40 to 4.5.41 [`#173`](https://github.com/hougesen/kdlfmt/pull/173)
+- build(deps): bump clap_complete from 4.5.54 to 4.5.55 [`#175`](https://github.com/hougesen/kdlfmt/pull/175)
+- build(deps-dev): bump esbuild from 0.25.5 to 0.25.6 in /github-action [`#171`](https://github.com/hougesen/kdlfmt/pull/171)
+- build(deps-dev): bump @biomejs/biome from 2.0.6 to 2.1.0 in /github-action [`#172`](https://github.com/hougesen/kdlfmt/pull/172)
 - build(deps): lock @types/node to v22.x [`#170`](https://github.com/hougesen/kdlfmt/pull/170)
 - build(deps-dev): bump globals from 16.2.0 to 16.3.0 in /github-action [`#169`](https://github.com/hougesen/kdlfmt/pull/169)
 - build(deps-dev): bump eslint from 9.30.0 to 9.30.1 in /github-action [`#167`](https://github.com/hougesen/kdlfmt/pull/167)
