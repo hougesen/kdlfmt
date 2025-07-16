@@ -18,6 +18,7 @@ run = [
   "mise fmt",
   "mdsf format .",
   "npx prettier --write --cache .",
+  "cargo run -- format .",
 ]
 
 [tasks.lint]

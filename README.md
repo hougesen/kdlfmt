@@ -201,6 +201,17 @@ Options:
 
 It uses the same syntax as `.gitignore` files.
 
+### Configuration
+
+A sample configuration file can be created by running `kdlfmt init`.
+
+```kdl
+// Amount of spaces to use for each indentation level
+indent_size 4
+// Whether to use tabs or spaces for indentation
+use_tabs #false
+```
+
 ### GitHub Action
 
 There are a lot of different ways to run `kdlfmt` using GitHub actions.
