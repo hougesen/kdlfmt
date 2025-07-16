@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.2...HEAD)
 
+- docs: config file [`#184`](https://github.com/hougesen/kdlfmt/pull/184)
+- docs: usage with treefmt [`#183`](https://github.com/hougesen/kdlfmt/pull/183)
 - feat: setup pre-commit hooks [`#182`](https://github.com/hougesen/kdlfmt/pull/182)
 - build(deps-dev): bump @biomejs/biome from 2.1.0 to 2.1.1 in /github-action [`#181`](https://github.com/hougesen/kdlfmt/pull/181)
 - build(deps-dev): bump eslint from 9.30.1 to 9.31.0 in /github-action [`#178`](https://github.com/hougesen/kdlfmt/pull/178)
