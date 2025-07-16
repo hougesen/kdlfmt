@@ -6,6 +6,7 @@
     "kdl": "kdlfmt",
     "nushell": "nufmt",
     "shell": "shfmt",
+    "toml": "tombi:format",
     "yaml": "prettier",
     "zsh": "shfmt"
   }
