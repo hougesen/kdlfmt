@@ -1,0 +1,17 @@
+---
+- id: kdlfmt-format
+  name: kdlfmt format
+  entry: kdlfmt format
+  description: Run 'kdlfmt format' on files
+  require_serial: true
+  files: \.kdl$
+  # TODO: switch to "rust" once pre-commit supports cargo workspaces
+  language: system
+- id: kdlfmt-check
+  name: kdlfmt check
+  entry: kdlfmt check
+  description: Run 'kdlfmt check' on files
+  require_serial: true
+  files: \.kdl$
+  # TODO: switch to "rust" once pre-commit supports cargo workspaces
+  language: system

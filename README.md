@@ -232,6 +232,20 @@ jobs:
           message: "style: formatted kdl"
 ```
 
+### pre-commit
+
+See [pre-commit](https://github.com/pre-commit/pre-commit) for instructions
+
+Sample `.pre-commit-config.yaml`:
+
+```yaml
+repos:
+  - repo: https://github.com/hougesen/kdlfmt
+    rev: main
+    hooks:
+      - id: kdlfmt-format
+```
+
 ### Shell completion
 
 Shell completion can be generated using the `kdlfmt completions` command.
