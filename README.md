@@ -246,6 +246,19 @@ repos:
       - id: kdlfmt-format
 ```
 
+### treefmt
+
+Add the following to your `treefmt.toml` to run kdlfmt using [treefmt](https://github.com/numtide/treefmt).
+
+```toml
+# treefmt.toml
+
+[formatter.kdlfmt]
+command = "kdlfmt"
+options = ["format"]
+includes = ["*.kdl"]
+```
+
 ### Shell completion
 
 Shell completion can be generated using the `kdlfmt completions` command.
