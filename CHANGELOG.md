@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.2...HEAD)
 
+- build(deps-dev): bump esbuild from 0.25.6 to 0.25.8 in /github-action [`#187`](https://github.com/hougesen/kdlfmt/pull/187)
+- build(deps-dev): bump @biomejs/biome from 2.1.1 to 2.1.2 in /github-action [`#188`](https://github.com/hougesen/kdlfmt/pull/188)
 - build: use windows-latest when publishing artifacts [`#185`](https://github.com/hougesen/kdlfmt/pull/185)
 - docs: config file [`#184`](https://github.com/hougesen/kdlfmt/pull/184)
 - docs: usage with treefmt [`#183`](https://github.com/hougesen/kdlfmt/pull/183)
