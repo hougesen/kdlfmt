@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.2...HEAD)
 
+- build: use windows-latest when publishing artifacts [`#185`](https://github.com/hougesen/kdlfmt/pull/185)
 - docs: config file [`#184`](https://github.com/hougesen/kdlfmt/pull/184)
 - docs: usage with treefmt [`#183`](https://github.com/hougesen/kdlfmt/pull/183)
 - feat: setup pre-commit hooks [`#182`](https://github.com/hougesen/kdlfmt/pull/182)
