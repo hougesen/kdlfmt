@@ -1,3 +1,4 @@
+---
 name: kdlfmt
 on: [push]
 jobs:
