@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.2...HEAD)
 
+- build(deps-dev): bump @biomejs/biome in /github-action [`#193`](https://github.com/hougesen/kdlfmt/pull/193)
+- build(deps): bump clap from 4.5.41 to 4.5.42 [`#194`](https://github.com/hougesen/kdlfmt/pull/194)
+- build(deps-dev): bump eslint from 9.31.0 to 9.32.0 in /github-action [`#191`](https://github.com/hougesen/kdlfmt/pull/191)
+- build: upgrade cargo dist to v0.28.1 [`#189`](https://github.com/hougesen/kdlfmt/pull/189)
 - build(deps-dev): bump esbuild from 0.25.6 to 0.25.8 in /github-action [`#187`](https://github.com/hougesen/kdlfmt/pull/187)
 - build(deps-dev): bump @biomejs/biome from 2.1.1 to 2.1.2 in /github-action [`#188`](https://github.com/hougesen/kdlfmt/pull/188)
 - build: use windows-latest when publishing artifacts [`#185`](https://github.com/hougesen/kdlfmt/pull/185)
