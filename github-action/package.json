@@ -35,7 +35,7 @@
     "@actions/tool-cache": "^2.0.2"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.1.4",
+    "@biomejs/biome": "^2.2.0",
     "@eslint/js": "^9.33.0",
     "@types/node": "22.x",
     "esbuild": "^0.25.9",
