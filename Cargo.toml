@@ -4,7 +4,7 @@ members = ["cli"]
 exclude = []
 
 [workspace.package]
-version = "0.1.2"
+version = "0.1.3"
 authors = ["Mads Hougesen <mads@mhouge.dk>"]
 edition = "2024"
 description = "A code formatter for kdl documents."
