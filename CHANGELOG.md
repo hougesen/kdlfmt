@@ -2,8 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.2...HEAD)
+#### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.3...HEAD)
 
+#### [v0.1.3](https://github.com/hougesen/kdlfmt/compare/v0.1.2...v0.1.3)
+
+> 23 August 2025
+
+- chore: release v0.1.3 [`#214`](https://github.com/hougesen/kdlfmt/pull/214)
 - build(deps-dev): bump eslint from 9.33.0 to 9.34.0 in /github-action [`#213`](https://github.com/hougesen/kdlfmt/pull/213)
 - build(deps): bump tempfile from 3.20.0 to 3.21.0 [`#211`](https://github.com/hougesen/kdlfmt/pull/211)
 - build(deps-dev): bump @biomejs/biome in /github-action [`#208`](https://github.com/hougesen/kdlfmt/pull/208)
