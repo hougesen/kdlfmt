@@ -18,7 +18,7 @@ categories = ["command-line-utilities", "development-tools"]
 
 [workspace.dependencies]
 assert_cmd = "2.0.17"
-clap = { version = "4.5.45", features = ["derive"] }
+clap = { version = "4.5.46", features = ["derive"] }
 clap_complete = "4.5.57"
 clap_complete_nushell = "4.5.8"
 console = "0.16.0"
