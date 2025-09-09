@@ -40,6 +40,6 @@
     "@types/node": "22.x",
     "esbuild": "^0.25.9",
     "eslint": "^9.35.0",
-    "globals": "^16.3.0"
+    "globals": "^16.4.0"
   }
 }
