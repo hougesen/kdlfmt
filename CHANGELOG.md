@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.3...HEAD)
 
+- build(deps): bump tempfile from 3.21.0 to 3.22.0 [`#226`](https://github.com/hougesen/kdlfmt/pull/226)
+- build(deps): bump console from 0.16.0 to 0.16.1 [`#225`](https://github.com/hougesen/kdlfmt/pull/225)
+- build(deps): bump log from 0.4.27 to 0.4.28 [`#224`](https://github.com/hougesen/kdlfmt/pull/224)
+- build(deps): bump clap from 4.5.46 to 4.5.47 [`#222`](https://github.com/hougesen/kdlfmt/pull/222)
+- build(deps-dev): bump @biomejs/biome in /github-action [`#220`](https://github.com/hougesen/kdlfmt/pull/220)
+- build(deps-dev): bump eslint from 9.34.0 to 9.35.0 in /github-action [`#223`](https://github.com/hougesen/kdlfmt/pull/223)
+- build(deps): bump clap from 4.5.45 to 4.5.46 [`#217`](https://github.com/hougesen/kdlfmt/pull/217)
+- build(deps-dev): bump @biomejs/biome in /github-action [`#216`](https://github.com/hougesen/kdlfmt/pull/216)
+- build(deps): bump console to v0.16.0 [`#215`](https://github.com/hougesen/kdlfmt/pull/215)
+
 #### [v0.1.3](https://github.com/hougesen/kdlfmt/compare/v0.1.2...v0.1.3)
 
 > 23 August 2025
