@@ -2,8 +2,15 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.3...HEAD)
+#### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.4...HEAD)
 
+#### [v0.1.4](https://github.com/hougesen/kdlfmt/compare/v0.1.3...v0.1.4)
+
+> 9 September 2025
+
+- chore: release v0.1.4 [`#229`](https://github.com/hougesen/kdlfmt/pull/229)
+- build(deps): bump actions/checkout from 4 to 5 [`#205`](https://github.com/hougesen/kdlfmt/pull/205)
+- build(deps-dev): bump globals from 16.3.0 to 16.4.0 in /github-action [`#228`](https://github.com/hougesen/kdlfmt/pull/228)
 - build(cargo-dist): bump version to v0.30.0 [`#227`](https://github.com/hougesen/kdlfmt/pull/227)
 - build(deps): bump tempfile from 3.21.0 to 3.22.0 [`#226`](https://github.com/hougesen/kdlfmt/pull/226)
 - build(deps): bump console from 0.16.0 to 0.16.1 [`#225`](https://github.com/hougesen/kdlfmt/pull/225)
@@ -14,7 +21,6 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(deps): bump clap from 4.5.45 to 4.5.46 [`#217`](https://github.com/hougesen/kdlfmt/pull/217)
 - build(deps-dev): bump @biomejs/biome in /github-action [`#216`](https://github.com/hougesen/kdlfmt/pull/216)
 - build(deps): bump console to v0.16.0 [`#215`](https://github.com/hougesen/kdlfmt/pull/215)
-- build(deps): bump actions/checkout from 4 to 5 [`4bf706f`](https://github.com/hougesen/kdlfmt/commit/4bf706f449819ad4ae831e856144801c27f87b6e)
 
 #### [v0.1.3](https://github.com/hougesen/kdlfmt/compare/v0.1.2...v0.1.3)
 
