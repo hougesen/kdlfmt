@@ -37,7 +37,7 @@
   "devDependencies": {
     "@biomejs/biome": "^2.2.4",
     "@eslint/js": "^9.36.0",
-    "@types/node": "22.x",
+    "@types/node": "24.x",
     "esbuild": "^0.25.10",
     "eslint": "^9.36.0",
     "globals": "^16.4.0"
