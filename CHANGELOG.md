@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.4...HEAD)
 
+- build(deps): bump actions/setup-node from 4 to 5 [`#218`](https://github.com/hougesen/kdlfmt/pull/218)
 - build(deps-dev): bump eslint from 9.36.0 to 9.37.0 in /github-action [`#242`](https://github.com/hougesen/kdlfmt/pull/242)
 - build(deps-dev): bump @biomejs/biome in /github-action [`#241`](https://github.com/hougesen/kdlfmt/pull/241)
 - build(deps): bump tempfile from 3.22.0 to 3.23.0 [`#240`](https://github.com/hougesen/kdlfmt/pull/240)
@@ -15,7 +16,6 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(deps-dev): bump @biomejs/biome in /github-action [`#232`](https://github.com/hougesen/kdlfmt/pull/232)
 - build(deps): bump kdl from 6.3.4 to 6.5.0 [`#231`](https://github.com/hougesen/kdlfmt/pull/231)
 - chore: add citation file [`fc6d4cb`](https://github.com/hougesen/kdlfmt/commit/fc6d4cb5ee628a376e39e033d1c959d36147d521)
-- build(deps): bump actions/setup-node from 4 to 5 [`e5a6434`](https://github.com/hougesen/kdlfmt/commit/e5a64348b3dbd4f5ba788d74937413b1c7785038)
 
 #### [v0.1.4](https://github.com/hougesen/kdlfmt/compare/v0.1.3...v0.1.4)
 
