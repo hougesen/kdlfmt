@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.4...HEAD)
 
+- build(deps-dev): bump eslint from 9.37.0 to 9.38.0 in /github-action [`#257`](https://github.com/hougesen/kdlfmt/pull/257)
+- build(deps-dev): bump @biomejs/biome in /github-action [`#262`](https://github.com/hougesen/kdlfmt/pull/262)
+- build(deps): bump clap_complete_nushell from 4.5.8 to 4.5.9 [`#251`](https://github.com/hougesen/kdlfmt/pull/251)
+- build(deps-dev): bump @eslint/js from 9.37.0 to 9.38.0 in /github-action [`#255`](https://github.com/hougesen/kdlfmt/pull/255)
+- build(deps): bump clap_complete from 4.5.58 to 4.5.59 [`#253`](https://github.com/hougesen/kdlfmt/pull/253)
+- build(deps): bump ignore from 0.4.23 to 0.4.24 [`#250`](https://github.com/hougesen/kdlfmt/pull/250)
+- build(deps-dev): bump esbuild from 0.25.10 to 0.25.11 in /github-action [`#258`](https://github.com/hougesen/kdlfmt/pull/258)
+- build(deps): bump clap from 4.5.48 to 4.5.50 [`#260`](https://github.com/hougesen/kdlfmt/pull/260)
+- build(dist): use default runner [`#245`](https://github.com/hougesen/kdlfmt/pull/245)
 - build(deps): bump actions/setup-node from 4 to 5 [`#218`](https://github.com/hougesen/kdlfmt/pull/218)
 - build(deps-dev): bump eslint from 9.36.0 to 9.37.0 in /github-action [`#242`](https://github.com/hougesen/kdlfmt/pull/242)
 - build(deps-dev): bump @biomejs/biome in /github-action [`#241`](https://github.com/hougesen/kdlfmt/pull/241)
@@ -16,6 +25,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(deps-dev): bump @biomejs/biome in /github-action [`#232`](https://github.com/hougesen/kdlfmt/pull/232)
 - build(deps): bump kdl from 6.3.4 to 6.5.0 [`#231`](https://github.com/hougesen/kdlfmt/pull/231)
 - chore: add citation file [`fc6d4cb`](https://github.com/hougesen/kdlfmt/commit/fc6d4cb5ee628a376e39e033d1c959d36147d521)
+- build(deps): bump actions/setup-node from 4 to 6 [`26c1d2c`](https://github.com/hougesen/kdlfmt/commit/26c1d2c2bc3b89380853ddb7740eb4d2b430a63d)
 
 #### [v0.1.4](https://github.com/hougesen/kdlfmt/compare/v0.1.3...v0.1.4)
 
