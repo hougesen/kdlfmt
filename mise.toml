@@ -14,7 +14,7 @@ run = ["npx auto-changelog -u --hide-credit -l 100 -b 100"]
 run = [
   "tombi format",
   "ruff format",
-  "cargo +nightly fmt",
+  "cargo fmt",
   "mise fmt",
   "mdsf format .",
   "npx prettier --write --cache .",
