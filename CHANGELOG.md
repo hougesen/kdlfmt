@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.4...HEAD)
 
+- build(deps): bump clap from 4.5.50 to 4.5.51 [`#267`](https://github.com/hougesen/kdlfmt/pull/267)
+- build(deps): bump assert_cmd from 2.0.17 to 2.1.1 [`#268`](https://github.com/hougesen/kdlfmt/pull/268)
+- build(deps-dev): bump @biomejs/biome in /github-action [`#266`](https://github.com/hougesen/kdlfmt/pull/266)
+- build(deps): bump actions/setup-node from 4 to 6 [`#254`](https://github.com/hougesen/kdlfmt/pull/254)
 - build(deps-dev): bump eslint from 9.37.0 to 9.38.0 in /github-action [`#257`](https://github.com/hougesen/kdlfmt/pull/257)
 - build(deps-dev): bump @biomejs/biome in /github-action [`#262`](https://github.com/hougesen/kdlfmt/pull/262)
 - build(deps): bump clap_complete_nushell from 4.5.8 to 4.5.9 [`#251`](https://github.com/hougesen/kdlfmt/pull/251)
@@ -25,7 +29,6 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(deps-dev): bump @biomejs/biome in /github-action [`#232`](https://github.com/hougesen/kdlfmt/pull/232)
 - build(deps): bump kdl from 6.3.4 to 6.5.0 [`#231`](https://github.com/hougesen/kdlfmt/pull/231)
 - chore: add citation file [`fc6d4cb`](https://github.com/hougesen/kdlfmt/commit/fc6d4cb5ee628a376e39e033d1c959d36147d521)
-- build(deps): bump actions/setup-node from 4 to 6 [`26c1d2c`](https://github.com/hougesen/kdlfmt/commit/26c1d2c2bc3b89380853ddb7740eb4d2b430a63d)
 
 #### [v0.1.4](https://github.com/hougesen/kdlfmt/compare/v0.1.3...v0.1.4)
 
