@@ -1,6 +1,5 @@
 use std::io::Write;
 
-use assert_cmd::cargo::CargoError;
 use predicates::prelude::PredicateBooleanExt;
 
 const BROKEN_V1_CODE: &str = r#"world          {
@@ -31,14 +30,14 @@ const INVALID_V1_CODE: &str = r#""""""""#;
 
 const INVALID_V2_CODE: &str = r#""""""""#;
 
-fn kdlfmt_command(path: Option<&std::path::Path>) -> Result<assert_cmd::Command, CargoError> {
-    let mut cmd = assert_cmd::Command::cargo_bin("kdlfmt")?;
+fn kdlfmt_command(path: Option<&std::path::Path>) -> assert_cmd::Command {
+    let mut cmd = assert_cmd::cargo_bin_cmd!("kdlfmt");
 
     if let Some(path) = path {
         cmd.current_dir(path);
     }
 
-    Ok(cmd)
+    cmd
 }
 
 fn setup_test_input(dir: &std::path::Path, code: &str) -> std::io::Result<tempfile::NamedTempFile> {
@@ -54,36 +53,33 @@ fn setup_test_input(dir: &std::path::Path, code: &str) -> std::io::Result<tempfi
     Ok(f)
 }
 
-fn init_command(path: Option<&std::path::Path>) -> Result<assert_cmd::Command, CargoError> {
-    let mut cmd = kdlfmt_command(path)?;
+fn init_command(path: Option<&std::path::Path>) -> assert_cmd::Command {
+    let mut cmd = kdlfmt_command(path);
 
     cmd.arg("init");
 
-    Ok(cmd)
+    cmd
 }
 
-fn format_command(path: Option<&std::path::Path>) -> Result<assert_cmd::Command, CargoError> {
-    let mut cmd = kdlfmt_command(path)?;
+fn format_command(path: Option<&std::path::Path>) -> assert_cmd::Command {
+    let mut cmd = kdlfmt_command(path);
 
     cmd.arg("format");
 
-    Ok(cmd)
+    cmd
 }
 
 #[test]
-fn help_arg_outputs_message() -> Result<(), CargoError> {
-    format_command(None)?
+fn help_arg_outputs_message() {
+    format_command(None)
         .arg("--help")
         .assert()
         .success()
         .stdout(predicates::str::is_empty().not());
-
-    Ok(())
 }
 
 #[cfg(test)]
 mod auto {
-    use assert_cmd::cargo::CargoError;
     use predicates::prelude::PredicateBooleanExt;
 
     use crate::{
@@ -92,13 +88,13 @@ mod auto {
     };
 
     #[test]
-    fn formats_broken_code() -> Result<(), Box<dyn core::error::Error>> {
+    fn formats_broken_code() -> std::io::Result<()> {
         let dir = tempfile::tempdir()?;
 
         {
             let file = setup_test_input(dir.path(), BROKEN_V1_CODE)?;
 
-            format_command(Some(dir.path()))?
+            format_command(Some(dir.path()))
                 .arg(file.path())
                 .assert()
                 .success()
@@ -112,7 +108,7 @@ mod auto {
         {
             let file = setup_test_input(dir.path(), BROKEN_V2_CODE)?;
 
-            format_command(Some(dir.path()))?
+            format_command(Some(dir.path()))
                 .arg(file.path())
                 .assert()
                 .success()
@@ -127,15 +123,15 @@ mod auto {
     }
 
     #[test]
-    fn formats_broken_code_with_config() -> Result<(), Box<dyn core::error::Error>> {
+    fn formats_broken_code_with_config() -> std::io::Result<()> {
         let dir = tempfile::tempdir()?;
 
-        init_command(Some(dir.path()))?.assert().success();
+        init_command(Some(dir.path())).assert().success();
 
         {
             let file = setup_test_input(dir.path(), BROKEN_V1_CODE)?;
 
-            format_command(Some(dir.path()))?
+            format_command(Some(dir.path()))
                 .arg(file.path())
                 .assert()
                 .success()
@@ -149,7 +145,7 @@ mod auto {
         {
             let file = setup_test_input(dir.path(), BROKEN_V2_CODE)?;
 
-            format_command(Some(dir.path()))?
+            format_command(Some(dir.path()))
                 .arg(file.path())
                 .assert()
                 .success()
@@ -164,10 +160,10 @@ mod auto {
     }
 
     #[test]
-    fn formats_broken_code_with_config_path() -> Result<(), Box<dyn core::error::Error>> {
+    fn formats_broken_code_with_config_path() -> std::io::Result<()> {
         let dir = tempfile::tempdir()?;
 
-        init_command(Some(dir.path()))?.assert().success();
+        init_command(Some(dir.path())).assert().success();
 
         let config_path = dir.path().join("new-config.kdl");
 
@@ -178,7 +174,7 @@ mod auto {
         {
             let file = setup_test_input(dir.path(), BROKEN_V1_CODE)?;
 
-            format_command(Some(dir.path()))?
+            format_command(Some(dir.path()))
                 .arg("--config")
                 .arg(&config_path)
                 .arg(file.path())
@@ -194,7 +190,7 @@ mod auto {
         {
             let file = setup_test_input(dir.path(), BROKEN_V2_CODE)?;
 
-            format_command(Some(dir.path()))?
+            format_command(Some(dir.path()))
                 .arg("--config")
                 .arg(&config_path)
                 .arg(file.path())
@@ -211,13 +207,13 @@ mod auto {
     }
 
     #[test]
-    fn prints_if_file_wasnt_changed() -> Result<(), Box<dyn core::error::Error>> {
+    fn prints_if_file_wasnt_changed() -> std::io::Result<()> {
         let dir = tempfile::tempdir()?;
 
         {
             let file = setup_test_input(dir.path(), FORMATTED_V1_CODE)?;
 
-            format_command(Some(dir.path()))?
+            format_command(Some(dir.path()))
                 .arg(file.path())
                 .assert()
                 .success()
@@ -231,7 +227,7 @@ mod auto {
         {
             let file = setup_test_input(dir.path(), FORMATTED_V2_CODE)?;
 
-            format_command(Some(dir.path()))?
+            format_command(Some(dir.path()))
                 .arg(file.path())
                 .assert()
                 .success()
@@ -246,14 +242,14 @@ mod auto {
     }
 
     #[test]
-    fn accepts_multiple_paths() -> Result<(), Box<dyn core::error::Error>> {
+    fn accepts_multiple_paths() -> std::io::Result<()> {
         let dir = tempfile::tempdir()?;
 
         {
             let file1 = setup_test_input(dir.path(), BROKEN_V1_CODE)?;
             let file2 = setup_test_input(dir.path(), BROKEN_V1_CODE)?;
 
-            format_command(Some(dir.path()))?
+            format_command(Some(dir.path()))
                 .arg(file1.path())
                 .arg(file2.path())
                 .assert()
@@ -276,7 +272,7 @@ mod auto {
             let file1 = setup_test_input(dir.path(), BROKEN_V2_CODE)?;
             let file2 = setup_test_input(dir.path(), BROKEN_V2_CODE)?;
 
-            format_command(Some(dir.path()))?
+            format_command(Some(dir.path()))
                 .arg(file1.path())
                 .arg(file2.path())
                 .assert()
@@ -298,39 +294,35 @@ mod auto {
     }
 
     #[test]
-    fn formats_broken_code_stdin() -> Result<(), CargoError> {
-        format_command(None)?
+    fn formats_broken_code_stdin() {
+        format_command(None)
             .arg("--stdin")
             .write_stdin(BROKEN_V1_CODE)
             .assert()
             .success()
             .stdout(predicates::str::contains(FORMATTED_V1_CODE));
 
-        format_command(None)?
+        format_command(None)
             .arg("--stdin")
             .write_stdin(BROKEN_V2_CODE)
             .assert()
             .success()
             .stdout(predicates::str::contains(FORMATTED_V2_CODE));
-
-        Ok(())
     }
 
     #[test]
-    fn do_nothing_without_input() -> Result<(), CargoError> {
-        format_command(None)?.assert().success();
-
-        Ok(())
+    fn do_nothing_without_input() {
+        format_command(None).assert().success();
     }
 
     #[test]
-    fn it_should_fail_if_kdl_is_invalid() -> Result<(), Box<dyn core::error::Error>> {
+    fn it_should_fail_if_kdl_is_invalid() -> std::io::Result<()> {
         let dir = tempfile::tempdir()?;
 
         {
             let file = setup_test_input(dir.path(), INVALID_V1_CODE)?;
 
-            format_command(Some(dir.path()))?
+            format_command(Some(dir.path()))
                 .arg(file.path())
                 .assert()
                 .failure()
@@ -344,7 +336,7 @@ mod auto {
         {
             let file = setup_test_input(dir.path(), INVALID_V2_CODE)?;
 
-            format_command(Some(dir.path()))?
+            format_command(Some(dir.path()))
                 .arg(file.path())
                 .assert()
                 .failure()
@@ -359,28 +351,25 @@ mod auto {
     }
 
     #[test]
-    fn it_should_fail_if_kdl_is_invalid_stdin() -> Result<(), CargoError> {
-        format_command(None)?
+    fn it_should_fail_if_kdl_is_invalid_stdin() {
+        format_command(None)
             .arg("--stdin")
             .write_stdin(INVALID_V1_CODE)
             .assert()
             .failure()
             .stderr(predicates::str::contains("Error parsing content"));
 
-        format_command(None)?
+        format_command(None)
             .arg("--stdin")
             .write_stdin(INVALID_V2_CODE)
             .assert()
             .failure()
             .stderr(predicates::str::contains("Error parsing content"));
-
-        Ok(())
     }
 }
 
 #[cfg(test)]
 mod v1 {
-    use assert_cmd::cargo::CargoError;
     use predicates::prelude::PredicateBooleanExt;
 
     use crate::{
@@ -388,12 +377,12 @@ mod v1 {
     };
 
     #[test]
-    fn formats_broken_code() -> Result<(), Box<dyn core::error::Error>> {
+    fn formats_broken_code() -> std::io::Result<()> {
         let dir = tempfile::tempdir()?;
 
         let file = setup_test_input(dir.path(), BROKEN_V1_CODE)?;
 
-        format_command(Some(dir.path()))?
+        format_command(Some(dir.path()))
             .arg("--kdl-version")
             .arg("v1")
             .arg(file.path())
@@ -409,8 +398,8 @@ mod v1 {
     }
 
     #[test]
-    fn formats_broken_code_stdin() -> Result<(), CargoError> {
-        format_command(None)?
+    fn formats_broken_code_stdin() {
+        format_command(None)
             .arg("--kdl-version")
             .arg("v1")
             .arg("--stdin")
@@ -418,29 +407,25 @@ mod v1 {
             .assert()
             .success()
             .stdout(predicates::str::contains(FORMATTED_V1_CODE));
-
-        Ok(())
     }
 
     #[test]
-    fn do_nothing_without_input() -> Result<(), CargoError> {
-        format_command(None)?
+    fn do_nothing_without_input() {
+        format_command(None)
             .arg("--kdl-version")
             .arg("v1")
             .assert()
             .success();
-
-        Ok(())
     }
 
     #[test]
-    fn accepts_multiple_paths() -> Result<(), Box<dyn core::error::Error>> {
+    fn accepts_multiple_paths() -> std::io::Result<()> {
         let dir = tempfile::tempdir()?;
 
         let file1 = setup_test_input(dir.path(), BROKEN_V1_CODE)?;
         let file2 = setup_test_input(dir.path(), BROKEN_V1_CODE)?;
 
-        format_command(Some(dir.path()))?
+        format_command(Some(dir.path()))
             .arg("--kdl-version")
             .arg("v1")
             .arg(file1.path())
@@ -464,12 +449,12 @@ mod v1 {
     }
 
     #[test]
-    fn it_should_fail_if_kdl_is_invalid() -> Result<(), Box<dyn core::error::Error>> {
+    fn it_should_fail_if_kdl_is_invalid() -> std::io::Result<()> {
         let dir = tempfile::tempdir()?;
 
         let file = setup_test_input(dir.path(), INVALID_V1_CODE)?;
 
-        format_command(Some(dir.path()))?
+        format_command(Some(dir.path()))
             .arg("--kdl-version")
             .arg("v1")
             .arg(file.path())
@@ -485,8 +470,8 @@ mod v1 {
     }
 
     #[test]
-    fn it_should_fail_if_kdl_is_invalid_stdin() -> Result<(), CargoError> {
-        format_command(None)?
+    fn it_should_fail_if_kdl_is_invalid_stdin() {
+        format_command(None)
             .arg("--kdl-version")
             .arg("v1")
             .arg("--stdin")
@@ -494,14 +479,11 @@ mod v1 {
             .assert()
             .failure()
             .stderr(predicates::str::contains("Error parsing content"));
-
-        Ok(())
     }
 }
 
 #[cfg(test)]
 mod v2 {
-    use assert_cmd::cargo::CargoError;
     use predicates::prelude::PredicateBooleanExt;
 
     use crate::{
@@ -509,12 +491,12 @@ mod v2 {
     };
 
     #[test]
-    fn formats_broken_code() -> Result<(), Box<dyn core::error::Error>> {
+    fn formats_broken_code() -> std::io::Result<()> {
         let dir = tempfile::tempdir()?;
 
         let file = setup_test_input(dir.path(), BROKEN_V2_CODE)?;
 
-        format_command(Some(dir.path()))?
+        format_command(Some(dir.path()))
             .arg("--kdl-version")
             .arg("v2")
             .arg(file.path())
@@ -530,8 +512,8 @@ mod v2 {
     }
 
     #[test]
-    fn formats_broken_code_stdin() -> Result<(), CargoError> {
-        format_command(None)?
+    fn formats_broken_code_stdin() {
+        format_command(None)
             .arg("--kdl-version")
             .arg("v2")
             .arg("--stdin")
@@ -539,29 +521,25 @@ mod v2 {
             .assert()
             .success()
             .stdout(predicates::str::contains(FORMATTED_V2_CODE));
-
-        Ok(())
     }
 
     #[test]
-    fn do_nothing_without_input() -> Result<(), CargoError> {
-        format_command(None)?
+    fn do_nothing_without_input() {
+        format_command(None)
             .arg("--kdl-version")
             .arg("v2")
             .assert()
             .success();
-
-        Ok(())
     }
 
     #[test]
-    fn accepts_multiple_paths() -> Result<(), Box<dyn core::error::Error>> {
+    fn accepts_multiple_paths() -> std::io::Result<()> {
         let dir = tempfile::tempdir()?;
 
         let file1 = setup_test_input(dir.path(), BROKEN_V2_CODE)?;
         let file2 = setup_test_input(dir.path(), BROKEN_V2_CODE)?;
 
-        format_command(Some(dir.path()))?
+        format_command(Some(dir.path()))
             .arg("--kdl-version")
             .arg("v2")
             .arg(file1.path())
@@ -585,12 +563,12 @@ mod v2 {
     }
 
     #[test]
-    fn it_should_fail_if_kdl_is_invalid() -> Result<(), Box<dyn core::error::Error>> {
+    fn it_should_fail_if_kdl_is_invalid() -> std::io::Result<()> {
         let dir = tempfile::tempdir()?;
 
         let file = setup_test_input(dir.path(), INVALID_V2_CODE)?;
 
-        format_command(Some(dir.path()))?
+        format_command(Some(dir.path()))
             .arg("--kdl-version")
             .arg("v2")
             .arg(file.path())
@@ -606,8 +584,8 @@ mod v2 {
     }
 
     #[test]
-    fn it_should_fail_if_kdl_is_invalid_stdin() -> Result<(), CargoError> {
-        format_command(None)?
+    fn it_should_fail_if_kdl_is_invalid_stdin() {
+        format_command(None)
             .arg("--kdl-version")
             .arg("v2")
             .arg("--stdin")
@@ -615,7 +593,5 @@ mod v2 {
             .assert()
             .failure()
             .stderr(predicates::str::contains("Error parsing content"));
-
-        Ok(())
     }
 }

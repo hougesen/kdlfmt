@@ -1,8 +1,7 @@
-use assert_cmd::cargo::CargoError;
 use predicates::prelude::PredicateBooleanExt;
 
-fn init_command(path: Option<&std::path::Path>) -> Result<assert_cmd::Command, CargoError> {
-    let mut cmd = assert_cmd::Command::cargo_bin("kdlfmt")?;
+fn init_command(path: Option<&std::path::Path>) -> assert_cmd::Command {
+    let mut cmd = assert_cmd::cargo_bin_cmd!("kdlfmt");
 
     if let Some(path) = path {
         cmd.current_dir(path);
@@ -10,14 +9,14 @@ fn init_command(path: Option<&std::path::Path>) -> Result<assert_cmd::Command, C
 
     cmd.arg("init");
 
-    Ok(cmd)
+    cmd
 }
 
 #[test]
-fn help_arg_outputs_message() -> Result<(), Box<dyn core::error::Error>> {
+fn help_arg_outputs_message() -> std::io::Result<()> {
     let dir = tempfile::tempdir()?;
 
-    init_command(Some(dir.path()))?
+    init_command(Some(dir.path()))
         .arg("--help")
         .assert()
         .success()
@@ -27,10 +26,10 @@ fn help_arg_outputs_message() -> Result<(), Box<dyn core::error::Error>> {
 }
 
 #[test]
-fn creates_a_config_file() -> Result<(), Box<dyn core::error::Error>> {
+fn creates_a_config_file() -> std::io::Result<()> {
     let dir = tempfile::tempdir()?;
 
-    init_command(Some(dir.path()))?.assert().success();
+    init_command(Some(dir.path())).assert().success();
 
     let config_file_created = dir.path().join("kdlfmt.kdl").try_exists()?;
 
@@ -40,25 +39,25 @@ fn creates_a_config_file() -> Result<(), Box<dyn core::error::Error>> {
 }
 
 #[test]
-fn fails_if_config_exists() -> Result<(), Box<dyn core::error::Error>> {
+fn fails_if_config_exists() -> std::io::Result<()> {
     let dir = tempfile::tempdir()?;
 
-    init_command(Some(dir.path()))?.assert().success();
+    init_command(Some(dir.path())).assert().success();
 
-    init_command(Some(dir.path()))?.assert().failure();
+    init_command(Some(dir.path())).assert().failure();
 
     Ok(())
 }
 
 #[test]
-fn force_config_arg() -> Result<(), Box<dyn core::error::Error>> {
+fn force_config_arg() -> std::io::Result<()> {
     let dir = tempfile::tempdir()?;
 
-    init_command(Some(dir.path()))?.assert().success();
+    init_command(Some(dir.path())).assert().success();
 
-    init_command(Some(dir.path()))?.assert().failure();
+    init_command(Some(dir.path())).assert().failure();
 
-    init_command(Some(dir.path()))?
+    init_command(Some(dir.path()))
         .arg("--force")
         .assert()
         .success();
