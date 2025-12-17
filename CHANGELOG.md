@@ -2,8 +2,14 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.4...HEAD)
+#### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.5...HEAD)
 
+#### [v0.1.5](https://github.com/hougesen/kdlfmt/compare/v0.1.4...v0.1.5)
+
+> 17 December 2025
+
+- build(cargo-dist): upgrade to v0.30.3 [`#305`](https://github.com/hougesen/kdlfmt/pull/305)
+- build: create new github action bundle [`#306`](https://github.com/hougesen/kdlfmt/pull/306)
 - build(deps-dev): bump esbuild from 0.27.0 to 0.27.2 in /github-action [`#302`](https://github.com/hougesen/kdlfmt/pull/302)
 - build(deps-dev): bump @biomejs/biome in /github-action [`#300`](https://github.com/hougesen/kdlfmt/pull/300)
 - build(deps): bump @actions/core from 1.11.1 to 2.0.1 in /github-action [`#301`](https://github.com/hougesen/kdlfmt/pull/301)
