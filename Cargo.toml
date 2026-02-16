@@ -19,7 +19,7 @@ categories = ["command-line-utilities", "development-tools"]
 [workspace.dependencies]
 assert_cmd = "2.1.2"
 clap = { version = "4.5.56", features = ["derive"] }
-clap_complete = "4.5.65"
+clap_complete = "4.5.66"
 clap_complete_nushell = "4.5.10"
 console = "0.16.2"
 ec4rs = "1.2.0"
