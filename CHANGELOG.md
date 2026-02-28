@@ -2,8 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.5...HEAD)
+#### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.6...HEAD)
 
+#### [v0.1.6](https://github.com/hougesen/kdlfmt/compare/v0.1.5...v0.1.6)
+
+> 28 February 2026
+
+- build(cargo-dist): upgrade to v0.31.0 [`#335`](https://github.com/hougesen/kdlfmt/pull/335)
 - build(deps-dev): bump esbuild from 0.27.2 to 0.27.3 in /github-action [`#329`](https://github.com/hougesen/kdlfmt/pull/329)
 - build(deps-dev): bump eslint from 9.39.2 to 10.0.2 in /github-action [`#334`](https://github.com/hougesen/kdlfmt/pull/334)
 - build(deps-dev): bump @biomejs/biome in /github-action [`#330`](https://github.com/hougesen/kdlfmt/pull/330)
