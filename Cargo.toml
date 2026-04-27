@@ -17,7 +17,7 @@ keywords = ["code-formatter", "formatter", "kdl", "pretty-printing"]
 categories = ["command-line-utilities", "development-tools"]
 
 [workspace.dependencies]
-assert_cmd = "2.2.0"
+assert_cmd = "2.2.1"
 clap = { version = "4.6.0", features = ["derive"] }
 clap_complete = "4.6.0"
 clap_complete_nushell = "4.6.0"
