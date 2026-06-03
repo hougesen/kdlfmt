@@ -26,7 +26,7 @@ ec4rs = "1.2.0"
 env_logger = "0.11.10"
 ignore = "0.4.25"
 kdl = { version = "6.5.0", features = ["v1"] }
-log = "0.4.30"
+log = "0.4.31"
 miette = { version = "7.6.0", features = ["fancy"] }
 predicates = "3.1.4"
 tempfile = "3.27.0"
