@@ -2,8 +2,18 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.6...HEAD)
+#### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.7...HEAD)
 
+- build(deps): bump log from 0.4.30 to 0.4.31 [`#377`](https://github.com/hougesen/kdlfmt/pull/377)
+- build(deps-dev): bump eslint from 10.4.0 to 10.4.1 in /github-action [`#375`](https://github.com/hougesen/kdlfmt/pull/375)
+- build(deps): bump log from 0.4.29 to 0.4.30 [`#374`](https://github.com/hougesen/kdlfmt/pull/374)
+- build(deps-dev): bump @biomejs/biome in /github-action [`#376`](https://github.com/hougesen/kdlfmt/pull/376)
+
+#### [v0.1.7](https://github.com/hougesen/kdlfmt/compare/v0.1.6...v0.1.7)
+
+> 24 May 2026
+
+- chore: release v0.1.7 [`#373`](https://github.com/hougesen/kdlfmt/pull/373)
 - build(deps-dev): bump eslint from 10.3.0 to 10.4.0 in /github-action [`#372`](https://github.com/hougesen/kdlfmt/pull/372)
 - build(deps-dev): bump @biomejs/biome in /github-action [`#370`](https://github.com/hougesen/kdlfmt/pull/370)
 - build(deps-dev): bump globals from 17.5.0 to 17.6.0 in /github-action [`#369`](https://github.com/hougesen/kdlfmt/pull/369)
