@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/kdlfmt/compare/v0.1.7...HEAD)
 
+- build(deps-dev): bump @biomejs/biome in /github-action [`#397`](https://github.com/hougesen/kdlfmt/pull/397)
+- build(deps-dev): bump @types/node in /github-action [`#396`](https://github.com/hougesen/kdlfmt/pull/396)
+- chore: change dependabot to monthly [`#395`](https://github.com/hougesen/kdlfmt/pull/395)
 - build(deps): bump clap_complete from 4.6.5 to 4.6.7 [`#393`](https://github.com/hougesen/kdlfmt/pull/393)
 - build(deps): bump console from 0.16.3 to 0.16.4 [`#392`](https://github.com/hougesen/kdlfmt/pull/392)
 - build(deps-dev): bump @biomejs/biome in /github-action [`#390`](https://github.com/hougesen/kdlfmt/pull/390)
